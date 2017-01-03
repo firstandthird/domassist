@@ -1,0 +1,73 @@
+{
+  "name": "domassist",
+  "version": "1.0.0",
+  "description": "Various dom helpers",
+  "main": "domassist.js",
+  "scripts": {
+    "dev": "nswatch",
+    "test": "browserify -t [ babelify --presets [ es2015 ] ] test/domassist.test.js | tape-run --browser phantomjs --render tap-spec",
+    "lint": "eslint . --ignore-pattern dist"
+  },
+  "watch": {
+    "lib/*.js": [
+      "lint",
+      "test"
+    ],
+    "test/*.js": [
+      "lint",
+      "test"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/domassist.git"
+  },
+  "keywords": [
+    "dom",
+    "browser",
+    "module",
+    "helper"
+  ],
+  "author": "First+Third",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/domassist/issues"
+  },
+  "homepage": "https://github.com/firstandthird/domassist#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "concurrently": "^3.1.0",
+    "eslint": "^3.9.1",
+    "eslint-config-firstandthird": "^3.1.0",
+    "eslint-plugin-import": "^2.1.0",
+    "nswatch": "^0.2.0",
+    "phantomjs": "^2.1.7",
+    "static-server": "^2.0.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "tape-run": "^2.1.5"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": "firstandthird",
+    "rules": {
+      "no-underscore-dangle": 0
+    }
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
+}
