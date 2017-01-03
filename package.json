@@ -28,7 +28,7 @@
     "module",
     "helper"
   ],
-  "author": "First+Third",
+  "author": "First+Third <code@firstandthird.com> (http://firstandthird.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/firstandthird/domassist/issues"
