@@ -50,6 +50,20 @@ test('addClass, hasClass, removeClass', assert => {
   assert.end();
 });
 
+test('toggleClass', assert => {
+  const el = domassist.findOne('#domassist');
+  el.innerHTML = '<div></div>';
+  domassist.toggleClass(el.firstChild, 'new-class');
+  assert.ok(/new-class/.test(el.firstChild.classList), 'Class list should contain "new-class"');
+  domassist.toggleClass(el.firstChild, 'new-class');
+  assert.notOk(/new-class/.test(el.firstChild.classList), 'Class list should not contain "new-class"');
+  // teardown
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+  assert.end();
+});
+
 test('show, hide', assert => {
   const el = domassist.findOne('#domassist');
   el.style.display = 'inline';
