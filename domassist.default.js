@@ -11,6 +11,7 @@ import once from './lib/once';
 import removeClass from './lib/removeClass';
 import show from './lib/show';
 import matches from './lib/matches';
+import toArray from './lib/toArray';
 
 export default {
   addClass,
@@ -25,5 +26,6 @@ export default {
   once,
   removeClass,
   show,
-  matches
+  matches,
+  toArray
 };
