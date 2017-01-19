@@ -11,6 +11,7 @@ export { default as once } from './lib/once';
 export { default as removeClass } from './lib/removeClass';
 export { default as show } from './lib/show';
 export { default as matches } from './lib/matches';
+export { default as toggleClass } from './lib/toggleClass';
 export { default as closest } from './lib/closest';
 export { default as ready } from './lib/ready';
 export { default as toArray } from './lib/toArray';
