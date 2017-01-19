@@ -70,6 +70,25 @@ test('addClass, hasClass, removeClass', assert => {
   assert.end();
 });
 
+test('toArray', assert => {
+  const frag = document.createDocumentFragment();
+  const total = 5;
+  for (let i = 0; i < total; i += 1) {
+    const div = document.createElement('div');
+    domassist.addClass(div, 'div-array');
+    frag.appendChild(div);
+  }
+  const el = domassist.findOne('#domassist');
+  el.appendChild(frag);
+  const divs = domassist.find('.div-array');
+  const arr = domassist.toArray(divs);
+  assert.ok(Array.isArray(arr), 'Nodelist converted to an array');
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+  assert.end();
+});
+
 test('show, hide', assert => {
   const el = domassist.findOne('#domassist');
   el.style.display = 'inline';
