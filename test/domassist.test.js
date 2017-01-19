@@ -14,6 +14,26 @@ init();
 
 const page = window.phantom.page;
 
+test('ready', assert => {
+  // if you add more assertions update this number
+  const assertions = 3;
+
+  assert.plan(assertions);
+
+  domassist.ready(() => {
+    const x = 1;
+    assert.ok(x === 1, '1st ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 2;
+    assert.ok(x === 2, '2nd ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 3;
+    assert.ok(x === 3, '3rd ready() fired');
+  });
+});
+
 test('find, findOne', assert => {
   const el = domassist.findOne('#domassist');
 
@@ -47,6 +67,25 @@ test('addClass, hasClass, removeClass', assert => {
   assert.ok(domassist.hasClass(el, 'testClass'), 'Class added');
   domassist.removeClass(el, 'testClass');
   assert.ok(!domassist.hasClass(el, 'testClass'), 'test class removed');
+  assert.end();
+});
+
+test('toArray', assert => {
+  const frag = document.createDocumentFragment();
+  const total = 5;
+  for (let i = 0; i < total; i += 1) {
+    const div = document.createElement('div');
+    domassist.addClass(div, 'div-array');
+    frag.appendChild(div);
+  }
+  const el = domassist.findOne('#domassist');
+  el.appendChild(frag);
+  const divs = domassist.find('.div-array');
+  const arr = domassist.toArray(divs);
+  assert.ok(Array.isArray(arr), 'Nodelist converted to an array');
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
   assert.end();
 });
 
