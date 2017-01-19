@@ -14,6 +14,26 @@ init();
 
 const page = window.phantom.page;
 
+test('ready', assert => {
+  // if you add more assertions update this number
+  const assertions = 3;
+
+  assert.plan(assertions);
+
+  domassist.ready(() => {
+    const x = 1;
+    assert.ok(x === 1, '1st ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 2;
+    assert.ok(x === 2, '2nd ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 3;
+    assert.ok(x === 3, '3rd ready() fired');
+  });
+});
+
 test('find, findOne', assert => {
   const el = domassist.findOne('#domassist');
 
@@ -60,6 +80,25 @@ test('addClass, hasClass, removeClass, toggleClass', assert => {
   assert.end();
 });
 
+test('toArray', assert => {
+  const frag = document.createDocumentFragment();
+  const total = 5;
+  for (let i = 0; i < total; i += 1) {
+    const div = document.createElement('div');
+    domassist.addClass(div, 'div-array');
+    frag.appendChild(div);
+  }
+  const el = domassist.findOne('#domassist');
+  el.appendChild(frag);
+  const divs = domassist.find('.div-array');
+  const arr = domassist.toArray(divs);
+  assert.ok(Array.isArray(arr), 'Nodelist converted to an array');
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+  assert.end();
+});
+
 test('show, hide', assert => {
   const el = domassist.findOne('#domassist');
   el.style.display = 'inline';
@@ -83,6 +122,37 @@ test('matches', assert => {
 
   const matcher = domassist.findOne('div', el);
   assert.ok(domassist.matches(matcher, '.test'), 'Matches');
+  assert.end();
+});
+
+test('closest', assert => {
+  const el = domassist.findOne('#domassist');
+  const levels = 4;
+  // clean up test dom
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+  function addNode(num) {
+    const node = document.createElement('div');
+    node.innerText = num;
+    node.classList.add(`level-${num}`);
+    const children = el.children;
+    if (children.length) {
+      const child = domassist.findOne(`.level-${num - 1}`);
+      child.appendChild(node);
+    } else {
+      el.appendChild(node);
+    }
+  }
+  for (let i = 0; i < levels; i += 1) {
+    addNode(i + 1);
+  }
+  const startEl = domassist.findOne(`.level-${levels}`);
+  let count = levels - 1;
+  while (count) {
+    assert.ok(domassist.closest(startEl, `.level-${count}`), `Should find element with class of level-${count}`);
+    --count;
+  }
   assert.end();
 });
 
