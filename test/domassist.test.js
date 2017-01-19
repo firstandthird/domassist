@@ -14,6 +14,26 @@ init();
 
 const page = window.phantom.page;
 
+test('ready', assert => {
+  // if you add more assertions update this number
+  const assertions = 3;
+
+  assert.plan(assertions);
+
+  domassist.ready(() => {
+    const x = 1;
+    assert.ok(x === 1, '1st ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 2;
+    assert.ok(x === 2, '2nd ready() fired');
+  });
+  domassist.ready(() => {
+    const x = 3;
+    assert.ok(x === 3, '3rd ready() fired');
+  });
+});
+
 test('find, findOne', assert => {
   const el = domassist.findOne('#domassist');
 
