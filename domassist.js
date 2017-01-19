@@ -15,4 +15,5 @@ export { default as toggleClass } from './lib/toggleClass';
 export { default as closest } from './lib/closest';
 export { default as ready } from './lib/ready';
 export { default as toArray } from './lib/toArray';
+export { default as styles } from './lib/styles';
 export { default } from './domassist.default';

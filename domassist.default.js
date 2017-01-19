@@ -15,6 +15,7 @@ import toggleClass from './lib/toggleClass';
 import closest from './lib/closest';
 import ready from './lib/ready';
 import toArray from './lib/toArray';
+import styles from './lib/styles';
 
 export default {
   addClass,
@@ -33,5 +34,6 @@ export default {
   toggleClass,
   closest,
   ready,
-  toArray
+  toArray,
+  styles
 };
