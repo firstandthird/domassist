@@ -11,6 +11,7 @@ import once from './lib/once';
 import removeClass from './lib/removeClass';
 import show from './lib/show';
 import matches from './lib/matches';
+import closest from './lib/closest';
 import ready from './lib/ready';
 import toArray from './lib/toArray';
 
@@ -28,6 +29,7 @@ export default {
   removeClass,
   show,
   matches,
+  closest,
   ready,
   toArray
 };
