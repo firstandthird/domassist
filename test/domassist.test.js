@@ -287,3 +287,26 @@ test('Events - hover', assert => {
   page.sendEvent('mousemove', pos.left + pos.width / 2, pos.top + pos.height / 2);
   page.sendEvent('mousemove', pos.left + pos.width + 100, pos.top + pos.height + 100);
 });
+
+test('styles', assert => {
+  const el = domassist.findOne('#domassist');
+
+  el.innerHTML = `
+    <p>p1</p>
+    <p>p2</p>
+  `;
+
+  // Test default find
+  const els = domassist.find('p');
+  domassist.styles(els, {
+    width: '100px',
+    height: '150px'
+  });
+
+  assert.equal(els[0].style.width, '100px', 'width on first el set correctly');
+  assert.equal(els[0].style.height, '150px', 'height on first el set correctly');
+  assert.equal(els[1].style.width, '100px', 'width on second el set correctly');
+  assert.equal(els[1].style.height, '150px', 'height on second el set correctly');
+
+  assert.end();
+});
