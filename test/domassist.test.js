@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 
-import domassist from '..';
+import domassist from '../domassist';
 
 import { test } from 'tape';
 
