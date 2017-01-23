@@ -4,7 +4,7 @@
   "description": "Various dom helpers",
   "main": "dist/domassist.js",
   "scripts": {
-    "build": "scriptkit",
+    "build": "scriptkit build",
     "dev": "scriptkit dev",
     "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec"
   },
@@ -28,7 +28,7 @@
     "eslint-config-firstandthird": "^3.1.0",
     "eslint-plugin-import": "^2.1.0",
     "phantomjs": "^2.1.7",
-    "scriptkit": "0.0.7",
+    "scriptkit": "0.0.8",
     "static-server": "^2.0.3",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3",
