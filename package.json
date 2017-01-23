@@ -1,12 +1,13 @@
 {
   "name": "domassist",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Various dom helpers",
   "main": "dist/domassist.js",
   "scripts": {
     "build": "scriptkit build",
     "dev": "scriptkit dev",
-    "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec"
+    "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec",
+    "prepublish": "scriptkit"
   },
   "repository": {
     "type": "git",
