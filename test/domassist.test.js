@@ -2,7 +2,7 @@
 
 import domassist from '../domassist';
 
-import { test } from 'tape';
+import test from 'tape-rollup';
 
 const init = () => {
   const container = document.createElement('div');
