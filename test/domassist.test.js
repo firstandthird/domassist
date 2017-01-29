@@ -1,16 +1,10 @@
 /* eslint no-console: 0 */
 
 import domassist from '../domassist';
-
 import test from 'tape-rollup';
+import './setup';
+import './mapEls.test.js';
 
-const init = () => {
-  const container = document.createElement('div');
-  container.id = 'domassist';
-  document.body.appendChild(container);
-};
-
-init();
 
 const page = window.phantom.page;
 
