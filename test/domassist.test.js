@@ -10,6 +10,12 @@ const init = () => {
   document.body.appendChild(container);
 };
 
+const teardown = (el) => {
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+};
+
 init();
 
 const page = window.phantom.page;
@@ -34,28 +40,59 @@ test('ready', assert => {
   });
 });
 
-test('find, findOne', assert => {
-  const el = domassist.findOne('#domassist');
+test('find', assert => {
+  const el = document.getElementById('domassist');
+  const frag = document.createDocumentFragment();
+  const total = 5;
+  for (let i = 0; i < total; i += 1) {
+    const div = document.createElement('div');
+    domassist.addClass(div, 'test-divs');
+    domassist.addClass(div, `div-${i}`);
+    const p = document.createElement('p');
+    p.innerHTML = `paragraph-${1}`;
+    div.appendChild(p);
+    frag.appendChild(div);
+  }
+  el.appendChild(frag);
+  const els = domassist.find('.test-divs');
 
-  el.innerHTML = `
-    <ul>
-      <li>Test1</li>
+  // test passing a string selector
+  assert.ok(Array.isArray(els), 'Returned value should be an array');
+  assert.equal(els.length, total, `Number of returned items should be ${total}`);
+  // test passing a DOM node
+  assert.ok(Array.isArray(domassist.find(el)), 'Passed DOM node is returned as an array');
+  assert.equal(domassist.find(el).length, 1, 'Number of returned items should be 1');
+  // test passing a selector that isn't found;
+  assert.equal(domassist.find('hello').length, 0, 'Pass non-existent selector returns empty array');
+  // find element with context
+  const para = domassist.find('p', '.div-1');
+  assert.ok(Array.isArray(para), 'Pass selector with context should return an array');
+  assert.equal(para.length, 1, 'Number of return items should be 1');
+  assert.equal(para[0].innerHTML, 'paragraph-1', 'Element\'s copy should be "paragraph-1"');
+  teardown(el);
+  assert.end();
+});
+
+test('findOne', assert => {
+  const el = domassist.find('#domassist');
+
+  el[0].innerHTML = `
+    <ul id="list">
+      <li id="firstItem">Test1</li>
       <li>Test2</li>
     </ul>
-    <p>p1</p>
-    <p>p2</p>
+    <p class="para1">p1</p>
+    <p class="para2"><span>p2</span></p>
   `;
 
-  // Test default find
-  const found1 = domassist.find('p');
-  assert.ok(found1 instanceof NodeList, 'Default - Elements found');
-  assert.equal(found1.length, 2, 'Default - Correct number of elements');
-
-  // Test scoped find
-  const list = domassist.findOne('ul');
-  const found2 = domassist.find('li', list);
-  assert.ok(found2 instanceof NodeList, 'Scoped - Elements found');
-  assert.equal(found2.length, 2, 'Scoped - Correct number of elements');
+  assert.ok(domassist.findOne('#list'), 'Element found');
+  assert.notOk(domassist.findOne('#fake'), 'Element not found');
+  const firstItem = domassist.findOne('#firstItem');
+  assert.equal(firstItem.innerHTML, 'Test1', 'ID selector found with value of Test1');
+  const para = domassist.findOne('.para1');
+  assert.equal(para.innerHTML, 'p1', 'Class selector found with value of p1');
+  const elWithContext = domassist.findOne('span', '.para2');
+  assert.equal(elWithContext.innerHTML, 'p2', 'Correct element with context found');
   assert.end();
 });
 
