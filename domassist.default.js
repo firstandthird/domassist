@@ -16,6 +16,7 @@ import closest from './lib/closest';
 import ready from './lib/ready';
 import toArray from './lib/toArray';
 import styles from './lib/styles';
+import html from './lib/html';
 
 export default {
   addClass,
@@ -35,5 +36,6 @@ export default {
   closest,
   ready,
   toArray,
-  styles
+  styles,
+  html,
 };
