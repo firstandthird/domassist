@@ -51,6 +51,15 @@ test('findOne', assert => {
   assert.end();
 });
 
+test('html', assert => {
+  const el = domassist.findOne('#domassist');
+  domassist.html(el, 'hello world');
+  assert.equal(el.innerHTML, 'hello world', 'Correct HTML added to element');
+  domassist.html(el, '');
+  assert.equal(el.innerHTML, '', 'HTML removed from element');
+  assert.end();
+});
+
 test('addClass, hasClass, removeClass, toggleClass', assert => {
   const el = domassist.findOne('#domassist');
 
