@@ -93,6 +93,7 @@ test('findOne', assert => {
   assert.equal(para.innerHTML, 'p1', 'Class selector found with value of p1');
   const elWithContext = domassist.findOne('span', '.para2');
   assert.equal(elWithContext.innerHTML, 'p2', 'Correct element with context found');
+  teardown(el);
   assert.end();
 });
 
