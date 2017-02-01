@@ -1,22 +1,9 @@
 /* eslint no-console: 0 */
 
 import domassist from '../domassist';
-
 import test from 'tape-rollup';
-
-const init = () => {
-  const container = document.createElement('div');
-  container.id = 'domassist';
-  document.body.appendChild(container);
-};
-
-const teardown = (el) => {
-  while (el.firstChild) {
-    el.removeChild(el.firstChild);
-  }
-};
-
-init();
+import { teardown } from './setup';
+import './find.test.js';
 
 const page = window.phantom.page;
 
@@ -38,46 +25,6 @@ test('ready', assert => {
     const x = 3;
     assert.ok(x === 3, '3rd ready() fired');
   });
-});
-
-test('find', assert => {
-  const el = document.getElementById('domassist');
-  const frag = document.createDocumentFragment();
-  const total = 5;
-  for (let i = 0; i < total; i += 1) {
-    const div = document.createElement('div');
-    domassist.addClass(div, 'test-divs');
-    domassist.addClass(div, `div-${i}`);
-    const p = document.createElement('p');
-    p.innerHTML = `paragraph-${1}`;
-    div.appendChild(p);
-    frag.appendChild(div);
-  }
-  el.appendChild(frag);
-  const els = domassist.find('.test-divs');
-
-  // test passing a string selector
-  assert.ok(Array.isArray(els), 'Returned value should be an array');
-  assert.equal(els.length, total, `Number of returned items should be ${total}`);
-
-  // test passing a DOM node
-  assert.ok(Array.isArray(domassist.find(el)), 'Passed DOM node is returned as an array');
-  assert.equal(domassist.find(el).length, 1, 'Number of returned items should be 1');
-  // test passing a selector that isn't found;
-  assert.equal(domassist.find('hello').length, 0, 'Pass non-existent selector returns empty array');
-
-  // find element with context
-  const para = domassist.find('p', '.div-1');
-  assert.ok(Array.isArray(para), 'Pass selector with context should return an array');
-  assert.equal(para.length, 1, 'Number of return items should be 1');
-  assert.equal(para[0].innerHTML, 'paragraph-1', 'Element\'s copy should be "paragraph-1"');
-
-  // test by passing a NodeList
-  const divs = domassist.find(document.querySelectorAll('.test-divs'));
-  assert.ok(Array.isArray(divs), 'NodeList returned as an array');
-  assert.equal(divs.length, 5, 'NodeList returned with 5 items');
-  teardown(el);
-  assert.end();
 });
 
 test('findOne', assert => {
