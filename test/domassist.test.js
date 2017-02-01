@@ -1,16 +1,9 @@
 /* eslint no-console: 0 */
 
 import domassist from '../domassist';
-
 import test from 'tape-rollup';
-
-const init = () => {
-  const container = document.createElement('div');
-  container.id = 'domassist';
-  document.body.appendChild(container);
-};
-
-init();
+import { teardown } from './setup';
+import './find.test.js';
 
 const page = window.phantom.page;
 
@@ -34,28 +27,27 @@ test('ready', assert => {
   });
 });
 
-test('find, findOne', assert => {
-  const el = domassist.findOne('#domassist');
+test('findOne', assert => {
+  const el = domassist.find('#domassist');
 
-  el.innerHTML = `
-    <ul>
-      <li>Test1</li>
+  el[0].innerHTML = `
+    <ul id="list">
+      <li id="firstItem">Test1</li>
       <li>Test2</li>
     </ul>
-    <p>p1</p>
-    <p>p2</p>
+    <p class="para1">p1</p>
+    <p class="para2"><span>p2</span></p>
   `;
 
-  // Test default find
-  const found1 = domassist.find('p');
-  assert.ok(found1 instanceof NodeList, 'Default - Elements found');
-  assert.equal(found1.length, 2, 'Default - Correct number of elements');
-
-  // Test scoped find
-  const list = domassist.findOne('ul');
-  const found2 = domassist.find('li', list);
-  assert.ok(found2 instanceof NodeList, 'Scoped - Elements found');
-  assert.equal(found2.length, 2, 'Scoped - Correct number of elements');
+  assert.ok(domassist.findOne('#list'), 'Element found');
+  assert.notOk(domassist.findOne('#fake'), 'Element not found');
+  const firstItem = domassist.findOne('#firstItem');
+  assert.equal(firstItem.innerHTML, 'Test1', 'ID selector found with value of Test1');
+  const para = domassist.findOne('.para1');
+  assert.equal(para.innerHTML, 'p1', 'Class selector found with value of p1');
+  const elWithContext = domassist.findOne('span', '.para2');
+  assert.equal(elWithContext.innerHTML, 'p2', 'Correct element with context found');
+  teardown(el);
   assert.end();
 });
 
