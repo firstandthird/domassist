@@ -28,15 +28,14 @@ test('Events - on multiple elements', assert => {
     <a id="link-3" href="#">Click</a>
     <a id="link-4" href="#">Click</a>
   `;
-
   const links = domassist.find('a', el);
-  links.forEach((item, index) => {
+  let index = 1;
+  domassist.on(links, 'click', e => {
+    assert.equal(e.target.id, `link-${index}`, `Link with id of link-${index} fired`);
+  });
+  links.forEach((item) => {
     const pos = item.getBoundingClientRect();
-
-    domassist.on(item, 'click', e => {
-      assert.equal(e.target.id, `link-${index + 1}`, `Link with id of link-${index + 1} fired`);
-    });
-
     page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
+    index += 1;
   });
 });
