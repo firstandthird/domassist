@@ -4,6 +4,7 @@ import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
 import './find.test.js';
+import './html.test.js';
 
 const page = window.phantom.page;
 
