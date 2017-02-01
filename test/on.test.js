@@ -32,7 +32,7 @@ test('Events - on multiple elements', assert => {
     <a href="#">Click</a>
   `;
 
-  const link = domassist.findOne('a', el);
+  const link = domassist.find('a', el);
   const pos = link.getBoundingClientRect();
 
   domassist.on(link, 'click', e => {
