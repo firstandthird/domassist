@@ -6,6 +6,7 @@ import { teardown } from './setup';
 import './find.test.js';
 import './on.test.js';
 import './off.test.js';
+import './html.test.js';
 
 const page = window.phantom.page;
 
