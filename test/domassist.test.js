@@ -4,6 +4,8 @@ import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
 import './find.test.js';
+import './on.test.js';
+import './off.test.js';
 import './html.test.js';
 
 const page = window.phantom.page;
@@ -168,50 +170,6 @@ test('closest', assert => {
     --count;
   }
   assert.end();
-});
-
-test('Events - on', assert => {
-  const el = domassist.findOne('#domassist');
-
-  el.innerHTML = `
-    <a href="#">Click</a>
-  `;
-
-  const link = domassist.findOne('a', el);
-  const pos = link.getBoundingClientRect();
-
-  domassist.on(link, 'click', e => {
-    assert.ok(e instanceof MouseEvent, 'Event fired');
-    assert.end();
-  });
-
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-});
-
-test('Events - off', assert => {
-  const el = domassist.findOne('#domassist');
-
-  el.innerHTML = `
-    <a href="#">Click</a>
-  `;
-
-  const link = domassist.findOne('a', el);
-  const pos = link.getBoundingClientRect();
-
-  let clicked = false;
-
-  domassist.on(link, 'click', e => {
-    clicked = true;
-  });
-
-  domassist.off(link, 'click');
-
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-
-  setTimeout(() => {
-    assert.ok(!clicked, 'Event not fired');
-    assert.end();
-  }, 500);
 });
 
 test('Events - delegate', assert => {
