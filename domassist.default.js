@@ -17,6 +17,7 @@ import ready from './lib/ready';
 import toArray from './lib/toArray';
 import styles from './lib/styles';
 import html from './lib/html';
+import modify from './lib/modify';
 
 export default {
   addClass,
@@ -38,4 +39,5 @@ export default {
   toArray,
   styles,
   html,
+  modify,
 };
