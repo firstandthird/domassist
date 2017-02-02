@@ -21,7 +21,7 @@ const teardown = (el) => {
   }
 };
 
-test('attrs - div attributes', assert => {
+test('addAttrs - div attributes', assert => {
   const el = domassist.findOne('#domassist');
   el.appendChild(setup(5));
   let testDiv = domassist.findOne('.div-0');
@@ -38,7 +38,7 @@ test('attrs - div attributes', assert => {
   assert.end();
 });
 
-test('attrs - anchor attributes', assert => {
+test('addAttrs - anchor attributes', assert => {
   const el = domassist.findOne('#domassist');
   el.appendChild(document.createElement('a'));
   let testAnchor = domassist.findOne('a');
@@ -53,6 +53,22 @@ test('attrs - anchor attributes', assert => {
   assert.equal(testAnchor.title, 'this is a title', 'Title attribute added');
   assert.equal(testAnchor.href, 'http://google.com/', 'HREF attribute added');
   assert.equal(testAnchor.dataset.testAttr, 'data attribute', 'Data attribute added');
+  teardown(el);
+  assert.end();
+});
+
+test('addAttrs - multiple elements', assert => {
+  const el = domassist.findOne('#domassist');
+  el.appendChild(setup(5));
+  let testDivs = domassist.find('.test-divs');
+  domassist.addAttrs(testDivs, {
+    title: 'this is a title',
+    testAttr: 'data attribute',
+  });
+  testDivs = domassist.find('.test-divs');
+  testDivs.forEach((item, index) => {
+    assert.equal(item.title, 'this is a title', `Attributes added to div-${index + 1} correctly`);
+  });
   teardown(el);
   assert.end();
 });
