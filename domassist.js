@@ -17,4 +17,5 @@ export { default as ready } from './lib/ready';
 export { default as toArray } from './lib/toArray';
 export { default as styles } from './lib/styles';
 export { default as html } from './lib/html';
+export { default as modify } from './lib/modify';
 export { default } from './domassist.default';
