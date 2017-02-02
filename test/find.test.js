@@ -32,6 +32,12 @@ test('find - string selector', assert => {
   assert.end();
 });
 
+test('find - from document', assert => {
+  const el = domassist.find('body')[0];
+  assert.equal(el, document.body, 'Should have a context of document if none provided.');
+  assert.end();
+});
+
 test('find - DOM Node', assert => {
   const el = document.getElementById('domassist');
   assert.ok(Array.isArray(domassist.find(el)), 'Passed DOM node is returned as an array');
