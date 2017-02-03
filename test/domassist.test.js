@@ -5,6 +5,7 @@ import test from 'tape-rollup';
 import { teardown } from './setup';
 import './find.test.js';
 import './classes.test';
+import './attrs.test.js';
 import './on.test.js';
 import './off.test.js';
 import './html.test.js';
