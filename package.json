@@ -1,6 +1,6 @@
 {
   "name": "domassist",
-  "version": "1.3.3",
+  "version": "1.4.1",
   "description": "Various dom helpers",
   "main": "dist/domassist.js",
   "module": "domassist.js",
@@ -30,7 +30,7 @@
     "eslint-config-firstandthird": "^3.1.0",
     "eslint-plugin-import": "^2.1.0",
     "phantomjs": "^2.1.7",
-    "scriptkit": "0.0.19",
+    "scriptkit": "0.0.22",
     "static-server": "^2.0.3",
     "tap-spec": "^4.1.1",
     "tape-rollup": "4.6.4",
