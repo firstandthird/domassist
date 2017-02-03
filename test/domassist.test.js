@@ -4,9 +4,12 @@ import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
 import './find.test.js';
+import './classes.test';
+import './attrs.test.js';
 import './on.test.js';
 import './off.test.js';
 import './html.test.js';
+import './modify.test.js';
 
 const page = window.phantom.page;
 
@@ -51,27 +54,6 @@ test('findOne', assert => {
   const elWithContext = domassist.findOne('span', '.para2');
   assert.equal(elWithContext.innerHTML, 'p2', 'Correct element with context found');
   teardown(el);
-  assert.end();
-});
-
-test('addClass, hasClass, removeClass, toggleClass', assert => {
-  const el = domassist.findOne('#domassist');
-
-  assert.ok(!domassist.hasClass(el, 'testClass'), 'Does not have test class');
-  domassist.addClass(el, 'testClass');
-  assert.ok(domassist.hasClass(el, 'testClass'), 'Class added');
-  domassist.removeClass(el, 'testClass');
-  assert.ok(!domassist.hasClass(el, 'testClass'), 'test class removed');
-
-  el.innerHTML = '<div></div>';
-  domassist.toggleClass(el.firstChild, 'new-class');
-  assert.ok(domassist.hasClass(el.firstChild, 'new-class'), 'toggleClass - class list should contain "new-class"');
-  domassist.toggleClass(el.firstChild, 'new-class');
-  assert.notOk(domassist.hasClass(el.firstChild, 'new-class'), 'toggleClass - class list should not contain "new-class"');
-  // teardown
-  while (el.firstChild) {
-    el.removeChild(el.firstChild);
-  }
   assert.end();
 });
 
