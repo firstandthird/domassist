@@ -8,6 +8,7 @@ import './classes.test';
 import './on.test.js';
 import './off.test.js';
 import './html.test.js';
+import './modify.test.js';
 
 const page = window.phantom.page;
 
