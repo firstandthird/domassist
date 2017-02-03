@@ -16,6 +16,7 @@ import closest from './lib/closest';
 import ready from './lib/ready';
 import toArray from './lib/toArray';
 import styles from './lib/styles';
+import addAttrs from './lib/addAttrs';
 import html from './lib/html';
 import modify from './lib/modify';
 
@@ -38,6 +39,7 @@ export default {
   ready,
   toArray,
   styles,
+  addAttrs,
   html,
   modify,
 };

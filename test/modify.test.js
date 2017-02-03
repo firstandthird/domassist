@@ -1,20 +1,20 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 
-// const setup = (total) => {
-//   const frag = document.createDocumentFragment();
-//   for (let i = 0; i < total; i += 1) {
-//     const div = document.createElement('div');
-//     domassist.addClass(div, 'test-divs');
-//     domassist.addClass(div, `div-${i}`);
-//     const p = document.createElement('p');
-//     p.innerHTML = `paragraph-${1}`;
-//     div.appendChild(p);
-//     frag.appendChild(div);
-//   }
-//   return frag;
-// };
-//
+const setup = (total) => {
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < total; i += 1) {
+    const div = document.createElement('div');
+    domassist.addClass(div, 'test-divs');
+    domassist.addClass(div, `div-${i}`);
+    const p = document.createElement('p');
+    p.innerHTML = `paragraph-${1}`;
+    div.appendChild(p);
+    frag.appendChild(div);
+  }
+  return frag;
+};
+
 const teardown = (el) => {
   while (el.firstChild) {
     el.removeChild(el.firstChild);
@@ -43,11 +43,24 @@ test('modify - remove class', assert => {
   assert.notOk(domassist.hasClass(el, 'testing'), 'Class removed');
   assert.end();
 });
-//
-// test('modify - attributes', assert => {
-//   const el = domassist.findOne('#domassist');
-// });
-//
+
+test('modify - attributes', assert => {
+  const el = domassist.findOne('#domassist');
+  el.appendChild(setup(5));
+  let testDiv = domassist.findOne('.div-0');
+  domassist.addAttrs(testDiv, {
+    id: 'new-id',
+    title: 'this is a title',
+    testAttr: 'data attribute',
+  });
+  testDiv = domassist.findOne('.div-0');
+  assert.equal(testDiv.id, 'new-id', 'ID attribute added');
+  assert.equal(testDiv.title, 'this is a title', 'Title attribute added');
+  assert.equal(testDiv.dataset.testAttr, 'data attribute', 'Data attribute added');
+  teardown(el);
+  assert.end();
+});
+
 test('modify - html', assert => {
   const el = domassist.findOne('#domassist');
   domassist.modify(el, {
