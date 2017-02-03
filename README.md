@@ -24,10 +24,11 @@ domassist.addClass(els, 'my-new-class');
 
 ## API
 
-- [find](#find)
-- [findOne](#findOne)
-- [addClass](#addClass)
-- [removeClass](#removeClass)
+- [find](#findselctor-context)
+- [findOne](#findOneselctor-context)
+- [addClass](#addClassselctor-classes)
+- [removeClass](#removeClassselctor-classes)
+- [toggleClass](#toggleClassselctor-classes)
 
 ### find(selector, [context])
 
