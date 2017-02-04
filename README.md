@@ -29,6 +29,8 @@ domassist.addClass(els, 'my-new-class');
 - [addClass](#addclassselector-classes)
 - [removeClass](#removeclassselector-classes)
 - [toggleClass](#toggleclassselector-classes)
+- [hasClass](#hasclassselector-class)
+- [html](#htmlselector-value)
 
 ### find(selector, [context])
 
@@ -44,11 +46,11 @@ Find elements on the page based on a valid CSS selector.
 
 `Array` - If no element is found an empty array is returned.
 
-#### Examples:
+#### Example:
 
 ```javascript
 domassist.find('p'); // find all paragraph tags
-domassist.find('[type="text"]', document.forms[0]) // find all text fields in the first form
+domassist.find('[type="text"]', document.forms[0]); // find all text fields in the first form
 ```
 
 ### findOne(selector, [context])
@@ -80,9 +82,9 @@ Add one or more classes to an element(s). For multiple classes pass an array.
 
 `Array` - An array of elements that classes were applied to.
 
-#### Examples:
+#### Example:
 
-```
+```javascript
 domassist.addClass('.my-div', 'new-class');
 domassist.addClass('.my-div', ['class-1', 'class-2', 'class-3']);
 ```
@@ -100,15 +102,64 @@ Remove one or more classes to an element(s). For multiple classes pass an array.
 
 `Array` - An array of elements that classes were applied to.
 
-#### Examples:
+#### Example:
 
-```
+```javascript
 domassist.removeClass('.my-div', 'new-class');
 domassist.removeClass('.my-div', ['class-1', 'class-2', 'class-3']);
 ```
 
 
 ### toggleClass(selector, class)
+
+Add a class if it doesn't exist and vice versa if it does.
+
+#### Parameters:
+
+`selector` - {string|Element} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+`class` - {string} The class to toggle.
+
+#### Example:
+
+```javascript
+// new-class does not exist on element
+domassist.toggleClass('.my-div', 'new-class'); // class added
+domassist.toggleClass('.my-div', 'new-class'); // class removed
+```
+
+
+### hasClass(selector, class)
+
+Find out if an element has a class assigned or not.
+
+#### Parameters:
+
+`selector` - {string|Element} - A valid CSS selector.
+`class` = {string} - The class to check for.
+
+#### Returns:
+
+`Boolean` - True is returned if the class exist.
+
+
+### html(selector, value)
+
+Update inner HTML of an element.
+
+#### Parameters:
+
+`selector` - {string|Element|NodeList} - A valid CSS selector, HTML element, or.
+`classes` - {string|Array} The class or classes to add.
+
+#### Example:
+
+```javascript
+domassist.html('.my-div', 'hello world'); // add html
+domassist.html('.my-div', ''); // remove html
+```
+
+
+
 
 ## License
 
