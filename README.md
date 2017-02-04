@@ -76,6 +76,7 @@ Add one or more classes to an element(s). For multiple classes pass an array.
 #### Parameters:
 
 `selector` - {string|Element|NodeList} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+
 `classes` - {string|Array} The class or classes to add.
 
 #### Returns:
@@ -96,6 +97,7 @@ Remove one or more classes to an element(s). For multiple classes pass an array.
 #### Parameters:
 
 `selector` - {string|Element|NodeList} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+
 `classes` - {string|Array} The class or classes to add.
 
 #### Returns:
@@ -117,6 +119,7 @@ Add a class if it doesn't exist and vice versa if it does.
 #### Parameters:
 
 `selector` - {string|Element} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+
 `class` - {string} The class to toggle.
 
 #### Example:
@@ -135,7 +138,8 @@ Find out if an element has a class assigned or not.
 #### Parameters:
 
 `selector` - {string|Element} - A valid CSS selector.
-`class` = {string} - The class to check for.
+
+`class` - {string} - The class to check for.
 
 #### Returns:
 
@@ -149,6 +153,7 @@ Update inner HTML of an element.
 #### Parameters:
 
 `selector` - {string|Element|NodeList} - A valid CSS selector, HTML element, or.
+
 `classes` - {string|Array} The class or classes to add.
 
 #### Example:
