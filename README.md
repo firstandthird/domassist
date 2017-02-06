@@ -31,6 +31,20 @@ domassist.addClass(els, 'my-new-class');
 - [toggleClass](#toggleclassselector-classes)
 - [hasClass](#hasclassselector-class)
 - [html](#htmlselector-value)
+- [closest](#closest)
+- [delegate](#delegate)
+- [hide](#hide)
+- [hover](#hover)
+- [matches](#matches)
+- [modify](#modify)
+- [on](#on)
+- [off](#off)
+- [once](#once)
+- [ready](#ready)
+- [show](#show)
+- [styles](#styles)
+- [toArray](#toArray)
+- [addAttrs](#addAttrs)
 
 ### find(selector, [context])
 
@@ -163,7 +177,46 @@ domassist.html('.my-div', 'hello world'); // add html
 domassist.html('.my-div', ''); // remove html
 ```
 
+### closest()
 
+
+### delegate()
+
+
+### hide()
+
+
+### hover()
+
+
+### matches()
+
+
+### modify()
+
+
+### on()
+
+
+### off()
+
+
+### once()
+
+
+### ready()
+
+
+### show()
+
+
+### styles()
+
+
+### toArray()
+
+
+### addAttrs()
 
 
 ## License
