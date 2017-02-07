@@ -10,6 +10,7 @@ export { default as off } from './lib/off';
 export { default as on } from './lib/on';
 export { default as once } from './lib/once';
 export { default as removeClass } from './lib/removeClass';
+export { default as scrollableContainer } from './lib/scrollableContainer';
 export { default as show } from './lib/show';
 export { default as matches } from './lib/matches';
 export { default as toggleClass } from './lib/toggleClass';

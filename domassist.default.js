@@ -10,6 +10,7 @@ import off from './lib/off';
 import on from './lib/on';
 import once from './lib/once';
 import removeClass from './lib/removeClass';
+import scrollableContainer from './lib/scrollableContainer';
 import show from './lib/show';
 import matches from './lib/matches';
 import toggleClass from './lib/toggleClass';
@@ -34,6 +35,7 @@ export default {
   on,
   once,
   removeClass,
+  scrollableContainer,
   show,
   matches,
   toggleClass,
