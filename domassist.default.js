@@ -5,6 +5,7 @@ import findOne from './lib/findOne';
 import hasClass from './lib/hasClass';
 import hide from './lib/hide';
 import hover from './lib/hover';
+import isWindow from './lib/isWindow';
 import off from './lib/off';
 import on from './lib/on';
 import once from './lib/once';
@@ -28,6 +29,7 @@ export default {
   hasClass,
   hide,
   hover,
+  isWindow,
   off,
   on,
   once,

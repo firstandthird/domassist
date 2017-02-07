@@ -5,6 +5,7 @@ export { default as findOne } from './lib/findOne';
 export { default as hasClass } from './lib/hasClass';
 export { default as hide } from './lib/hide';
 export { default as hover } from './lib/hover';
+export { default as isWindow } from './lib/isWindow';
 export { default as off } from './lib/off';
 export { default as on } from './lib/on';
 export { default as once } from './lib/once';
