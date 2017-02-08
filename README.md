@@ -31,20 +31,20 @@ domassist.addClass(els, 'my-new-class');
 - [toggleClass](#toggleclassselector-classes)
 - [hasClass](#hasclassselector-class)
 - [html](#htmlselector-value)
-- [closest](#closest)
-- [delegate](#delegate)
-- [hide](#hide)
-- [hover](#hover)
+- [closest](#closestelement-selector)
+- [delegate](#delegateelement-event-selector-callback-capture)
+- [hide](#hideelement)
+- [hover](#hoverelement-enter-exit)
 - [matches](#matches)
-- [modify](#modify)
-- [on](#on)
-- [off](#off)
-- [once](#once)
-- [ready](#ready)
-- [show](#show)
-- [styles](#styles)
+- [modify](#modifyselector-params)
+- [on](#onselector-event-callback-capture)
+- [off](#offselector-event)
+- [once](#onceselector-event-callback-capture)
+- [ready](#readycallback)
+- [show](#showelement)
+- [styles](#styleselements-styles)
 - [toArray](#toArray)
-- [addAttrs](#addAttrs)
+- [addAttrs](#addAttrsselector-attributes)
 
 ### find(selector, [context])
 
@@ -367,7 +367,7 @@ Parameters:
 `element` - {Element}
 
 
-### styles(elements)
+### styles(elements, styles)
 
 Apply css styles to an element(s).
 
