@@ -387,7 +387,8 @@ Add attributes to elements. If an attribute that is passed is not a valid attrib
 
 #### Parameters:
 
-`selector` - {string|Element|NodeList} The element(s) to apply new attributes to
+`selector` - {string|Element|NodeList} The element(s) to apply new attributes to.
+
 `attributes` - {object} An object of attributes
 
 #### Example:
