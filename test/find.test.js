@@ -42,6 +42,8 @@ test('find - DOM Node', assert => {
   const el = document.getElementById('domassist');
   assert.ok(Array.isArray(domassist.find(el)), 'Passed DOM node is returned as an array');
   assert.equal(domassist.find(el).length, 1, 'Number of returned items should be 1');
+  assert.equal(domassist.find(window)[0], window, 'It works with the window object');
+
   teardown(el);
   assert.end();
 });
