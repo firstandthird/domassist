@@ -43,8 +43,8 @@ domassist.addClass(els, 'my-new-class');
 - [ready](#readycallback)
 - [show](#showelement)
 - [styles](#styleselements-styles)
-- [toArray](#toArray)
-- [addAttrs](#addAttrsselector-attributes)
+- [toArray](#toarray)
+- [addAttrs](#addattrsselector-attributes)
 
 ### find(selector, [context])
 
