@@ -177,46 +177,237 @@ domassist.html('.my-div', 'hello world'); // add html
 domassist.html('.my-div', ''); // remove html
 ```
 
-### closest()
+### closest(element, selector)
+
+Find the closest parent element that matches the given selector
+
+#### Parameters:
+
+`element` - {Element} the element where you want to start looking from
+
+`selector` - {string} A valid CSS of the element to be found.
 
 
-### delegate()
+### delegate(element, event, selector, callback, capture)
 
 
-### hide()
 
 
-### hover()
+### hide(element)
+
+Hide an element by setting it's css `display` to `none`.
+
+Parameters:
+
+`element` - {Element}
+
+
+### hover(element, enter, exit)
+
+Easy way to add callbacks to the `mouseenter` and `mouseleave` events.
+
+#### Parameters:
+
+`element` - {Element}
+
+`enter` - {function} Callback to fire when user moves mouse over the supplied element.
+
+`exit` - {function} Callback to fire when user moves mouse off the supplied element.
+
+#### Examples:
+
+```javascript
+domassist.hover('.my-div', (e) => {
+  console.log('mouse over');
+}, (e) => {
+  console.log('mouse out');
+});
+```
 
 
 ### matches()
 
 
-### modify()
+### modify(selector, params)
+
+Modify many parts of an element at once such as adding and removing classes, changing the element's html, or attaching events.
+
+#### Parameters:
+
+`selector` - {string|Element|NodeList}
+
+`params` - {object} An object of key:value pairs of what element parameters to change.
+
+#### Examples:
+
+```javascript
+domassist.modify('.my-div', {
+  addClass: 'testing',
+  html: 'hello world',
+  events: {
+    click: (e) => {
+      // do something
+    },
+    mouseenter: (e) => {
+      // do something
+    },
+    mouseleave: (e) => {
+      // do something
+    }
+  },
+  styles: {
+    width: '100px',
+    height: '150px',
+  }
+});
+```
 
 
-### on()
+### on(selector, event, callback capture)
+
+Attach an event to an element based on a valid CSS selector or an Element.
 
 
-### off()
+#### Parameters:
+
+`selector` - {string|Element|NodeList}
+
+`event` - {string} The name of the event to attach such as `click`, `mouseenter`, or `touchend`
+
+`callback` - {function} A function to be called when the supplied event is triggered.
+
+`[capture = false]` - {Boolean} Determines which phase to the attach the event to. Default is `false` when means the event is attached to the bubble phase. If `true` then it's attached to the capture phase.
+
+### Example:
+
+```javascript
+domassist.on('a', 'click', (e) => {
+  e.preventDefault();
+  console.log('clicked!');
+});
+```
 
 
-### once()
+### off(selector, event)
+
+Remove an attached event.
+
+#### Parameters
+
+`selector` - {string|Element|NodeList}
+
+`event` - {string} The name of the event to remove such as `click`, `mouseenter`, or `touchend`
+
+### Example:
+
+```javascript
+domassist.off('a', 'click');
+```
 
 
-### ready()
+### once(element, event, callback, capture)
+
+Attach an event to an element to be fired once.
+
+#### Parameters:
+
+`selector` - {Element}
+
+`event` - {string} The name of the event to attach such as `click`, `mouseenter`, or `touchend`
+
+`callback` - {function} A function to be called when the supplied event is triggered.
+
+`[capture = false]` - {Boolean} Determines which phase to the attach the event to. Default is `false` when means the event is attached to the bubble phase. If `true` then it's attached to the capture phase.
+
+### Example:
+
+```javascript
+domassist.once('a', 'click', (e) => {
+  e.preventDefault();
+  console.log('clicked!');
+});
+```
 
 
-### show()
+### ready(callback)
+
+Add a function to be called once the `DOMContentLoaded` event is fired. This is when the entire DOM has been finished downloading. You'll want to use this method to execute javascript on page load. You can call this method many times throughout your application allowing you to add multiple callbacks.
+
+#### Parameters:
+
+`callback` - {function} The function to be called once the page has finished loading.
+
+#### Example:
+
+```javascript
+domassist.ready(() => {
+  const x = 1;
+  console.log('x is', x);
+});
+domassist.ready(() => {
+  const x = 2;
+  console.log('x is', x);
+});
+domassist.ready(() => {
+  const x = 3;
+  console.log('x is', x);
+});
+// x is 1
+// x is 2
+// x is 3
+```
 
 
-### styles()
+### show(element)
+
+Show an element by setting an element's `display` to it's default display type.
+
+Parameters:
+
+`element` - {Element}
+
+
+### styles(elements)
+
+Apply css styles to an element(s).
+
+#### Parameters:
+
+`elements` - {Element|NodeList} An element or list of elements to apply CSS to.
+
+`styles` - {object} CSS styles as a key:value pair, ex `{ width: '100px', height: '100px'}`.
 
 
 ### toArray()
 
 
-### addAttrs()
+### addAttrs(selector, attributes)
+
+Add attributes to elements. If an attribute that is passed is not a valid attribute for the element it will be added as a `data-*` attribute.
+
+#### Parameters:
+
+`selector` - {string|Element|NodeList} The element(s) to apply new attributes to
+`attributes` - {object} An object of attributes
+
+#### Example:
+
+```javascript
+domassist.addAttrs('.my-div', {
+  id: 'anchor-id',
+  title: 'this is a title',
+  href: 'http://google.com',
+  testAttr: 'data attribute',
+});
+domassist.addAttrs('a', {
+  id: 'anchor-id',
+  title: 'this is a title',
+  href: 'http://google.com',
+  testAttr: 'data attribute',
+});
+// <div class="my-div" id="anchor-id" title="this is a title" data-href="http://www.google.com" data-test-attr="data attribute"></div>
+// <a class="my-div" id="anchor-id" title="this is a title" href="http://www.google.com" data-test-attr="data attribute"></a>
+```
 
 
 ## License
