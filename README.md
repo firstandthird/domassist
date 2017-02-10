@@ -263,7 +263,7 @@ domassist.modify('.my-div', {
 ```
 
 
-### on(selector, event, callback capture)
+### on(selector, event, callback, capture)
 
 Attach an event to an element based on a valid CSS selector or an Element.
 
