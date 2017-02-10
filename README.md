@@ -177,13 +177,13 @@ domassist.html('.my-div', 'hello world'); // add html
 domassist.html('.my-div', ''); // remove html
 ```
 
-### closest(element, selector)
+### closest(origin, selector)
 
 Find the closest parent element that matches the given selector
 
 #### Parameters:
 
-`element` - {Element} the element where you want to start looking from
+`origin` - {string:Element} - the element where you want to start looking from. It can be either a valid CSS selector or an Element.
 
 `selector` - {string} A valid CSS of the element to be found.
 
@@ -305,13 +305,13 @@ domassist.off('a', 'click');
 ```
 
 
-### once(element, event, callback, capture)
+### once(selector, event, callback, capture)
 
 Attach an event to an element to be fired once.
 
 #### Parameters:
 
-`selector` - {Element}
+`selector` - {string|Element}
 
 `event` - {string} The name of the event to attach such as `click`, `mouseenter`, or `touchend`
 

@@ -3,13 +3,15 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
-import './find.test.js';
+import './find.test';
 import './classes.test';
-import './attrs.test.js';
-import './on.test.js';
-import './off.test.js';
-import './html.test.js';
-import './modify.test.js';
+import './attrs.test';
+import './on.test';
+import './off.test';
+import './html.test';
+import './modify.test';
+import './closest.test';
+import './once.test';
 
 const page = window.phantom.page;
 
@@ -123,37 +125,6 @@ test('matches', assert => {
   assert.end();
 });
 
-test('closest', assert => {
-  const el = domassist.findOne('#domassist');
-  const levels = 4;
-  // clean up test dom
-  while (el.firstChild) {
-    el.removeChild(el.firstChild);
-  }
-  function addNode(num) {
-    const node = document.createElement('div');
-    node.innerText = num;
-    node.classList.add(`level-${num}`);
-    const children = el.children;
-    if (children.length) {
-      const child = domassist.findOne(`.level-${num - 1}`);
-      child.appendChild(node);
-    } else {
-      el.appendChild(node);
-    }
-  }
-  for (let i = 0; i < levels; i += 1) {
-    addNode(i + 1);
-  }
-  const startEl = domassist.findOne(`.level-${levels}`);
-  let count = levels - 1;
-  while (count) {
-    assert.ok(domassist.closest(startEl, `.level-${count}`), `Should find element with class of level-${count}`);
-    --count;
-  }
-  assert.end();
-});
-
 test('Events - delegate', assert => {
   const el = domassist.findOne('#domassist');
 
@@ -170,32 +141,6 @@ test('Events - delegate', assert => {
   const pos = button.getBoundingClientRect();
 
   page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-});
-
-test('Events - once', assert => {
-  const el = domassist.findOne('#domassist');
-
-  el.innerHTML = `
-    <a href="#">Click</a>
-  `;
-
-  const link = domassist.findOne('a', el);
-  const pos = link.getBoundingClientRect();
-
-  let clicks = 0;
-
-  domassist.once(link, 'click', e => {
-    clicks++;
-  });
-
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-
-  setTimeout(() => {
-    assert.equal(clicks, 1, 'Only fired once');
-    assert.end();
-  }, 500);
 });
 
 test('Events - hover', assert => {
