@@ -102,6 +102,7 @@ test('show, hide', assert => {
   el.style.display = 'inline';
 
   domassist.hide(el);
+  domassist.hide(el);
   assert.equal(el.style.display, 'none', 'Element hidden');
   domassist.show(el);
   assert.equal(el.style.display, 'inline', 'Element shown');
