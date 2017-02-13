@@ -86,3 +86,16 @@ test('removeClass - multiple elements / multiple classes', assert => {
   teardown(el);
   assert.end();
 });
+
+test('hasClass - selector', assert => {
+  const el = domassist.findOne('#domassist');
+  el.appendChild(setup(1));
+  assert.equal(domassist.hasClass('.test-divs', 'test-divs'), true, 'selector with existing element');
+  assert.equal(domassist.hasClass('.nope', 'test-divs'), false, 'selector with non-existing element');
+  const testDiv = document.querySelector('.test-divs');
+  assert.equal(domassist.hasClass(testDiv, 'test-divs'), true, 'dom node');
+  const nonEl = document.querySelector('.nope');
+  assert.equal(domassist.hasClass(nonEl, 'test-divs'), false, 'false if element doesnt exist');
+  teardown(el);
+  assert.end();
+});

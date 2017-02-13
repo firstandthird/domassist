@@ -5,8 +5,7 @@
   "main": "dist/domassist.js",
   "module": "domassist.js",
   "scripts": {
-    "build": "scriptkit build",
-    "dev": "scriptkit dev",
+    "start": "scriptkit",
     "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec",
     "prepublish": "scriptkit"
   },
