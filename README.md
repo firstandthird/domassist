@@ -183,7 +183,7 @@ Find the closest parent element that matches the given selector
 
 #### Parameters:
 
-`origin` - {string:Element} - the element where you want to start looking from. It can be either a valid CSS selector or an Element.
+`origin` - {string|Element} - the element where you want to start looking from. It can be either a valid CSS selector or an Element.
 
 `selector` - {string} A valid CSS of the element to be found.
 
