@@ -2,18 +2,12 @@ import domassist from '../domassist';
 import test from 'tape-rollup';
 
 const classes = ['class-1', 'class-2', 'class-3'];
-const setup = (total) => {
-  const frag = document.createDocumentFragment();
-  for (let i = 0; i < total; i += 1) {
-    const div = document.createElement('div');
-    domassist.addClass(div, 'test-divs');
-    domassist.addClass(div, `div-${i}`);
-    const p = document.createElement('p');
-    p.innerHTML = `paragraph-${1}`;
-    div.appendChild(p);
-    frag.appendChild(div);
-  }
-  return frag;
+const setup = (el) => {
+  el.innerHTML = `<div id="div-0" class="test-divs"><p>paragraph-0</p></div>
+    <div id="div-1" class="test-divs"><p>paragraph-1</p></div>
+    <div id="div-2" class="test-divs"><p>paragraph-2</p></div>
+    <div id="div-3" class="test-divs"><p>paragraph-3</p></div>
+    <div id="div-4" class="test-divs"><p>paragraph-4</p></div>`;
 };
 
 const teardown = (el) => {
@@ -51,7 +45,7 @@ test('addClass - single element / multiple classes', assert => {
 test('addClass - multiple elements / multiple classes', assert => {
   const el = domassist.findOne('#domassist');
   const total = 5;
-  el.appendChild(setup(total));
+  setup(el);
   domassist.addClass('.test-divs', classes);
   const divs = domassist.find('.test-divs');
   const count = divs.filter((div) => {
@@ -73,8 +67,7 @@ test('removeClass - single element / multiple classes', assert => {
 
 test('removeClass - multiple elements / multiple classes', assert => {
   const el = domassist.findOne('#domassist');
-  const total = 5;
-  el.appendChild(setup(total));
+  setup(el);
   domassist.addClass('.test-divs', classes);
   domassist.removeClass('.test-divs', classes);
   const divs = domassist.find('.test-divs');
@@ -89,7 +82,7 @@ test('removeClass - multiple elements / multiple classes', assert => {
 
 test('hasClass - selector', assert => {
   const el = domassist.findOne('#domassist');
-  el.appendChild(setup(1));
+  setup(el);
   assert.equal(domassist.hasClass('.test-divs', 'test-divs'), true, 'selector with existing element');
   assert.equal(domassist.hasClass('.nope', 'test-divs'), false, 'selector with non-existing element');
   const testDiv = document.querySelector('.test-divs');
