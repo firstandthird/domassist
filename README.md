@@ -43,7 +43,6 @@ domassist.addClass(els, 'my-new-class');
 - [ready](#readycallback)
 - [show](#showelement)
 - [styles](#styleselements-styles)
-- [toArray](#toarray)
 - [addAttrs](#addattrsselector-attributes)
 
 ### find(selector, [context])
@@ -193,13 +192,13 @@ Find the closest parent element that matches the given selector
 
 
 
-### hide(element)
+### hide(selector)
 
 Hide an element by setting it's css `display` to `none`.
 
 Parameters:
 
-`element` - {Element}
+`selector` - {string|Element|NodeList}
 
 
 ### hover(element, enter, exit)
@@ -358,27 +357,33 @@ domassist.ready(() => {
 ```
 
 
-### show(element)
+### show(selector)
 
 Show an element by setting an element's `display` to it's default display type.
 
 Parameters:
 
-`element` - {Element}
+`selector` - {string|Element|NodeList}
 
 
-### styles(elements, styles)
+### styles(selector, styles)
 
 Apply css styles to an element(s).
 
 #### Parameters:
 
-`elements` - {Element|NodeList} An element or list of elements to apply CSS to.
+`selector` - {string|Element|NodeList}
 
 `styles` - {object} CSS styles as a key:value pair, ex `{ width: '100px', height: '100px'}`.
 
+#### Example
 
-### toArray()
+```javascript
+domassist.styles('p', {
+  width: '100px',
+  height: '150px'
+});
+```
 
 
 ### addAttrs(selector, attributes)
