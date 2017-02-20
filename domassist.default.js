@@ -16,7 +16,6 @@ import matches from './lib/matches';
 import toggleClass from './lib/toggleClass';
 import closest from './lib/closest';
 import ready from './lib/ready';
-import toArray from './lib/toArray';
 import styles from './lib/styles';
 import addAttrs from './lib/addAttrs';
 import html from './lib/html';
@@ -41,7 +40,6 @@ export default {
   toggleClass,
   closest,
   ready,
-  toArray,
   styles,
   addAttrs,
   html,
