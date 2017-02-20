@@ -20,6 +20,7 @@ import styles from './lib/styles';
 import addAttrs from './lib/addAttrs';
 import html from './lib/html';
 import modify from './lib/modify';
+import append from './lib/append';
 
 export default {
   addClass,
@@ -44,4 +45,5 @@ export default {
   addAttrs,
   html,
   modify,
+  append,
 };

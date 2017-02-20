@@ -20,4 +20,5 @@ export { default as styles } from './lib/styles';
 export { default as addAttrs } from './lib/addAttrs';
 export { default as html } from './lib/html';
 export { default as modify } from './lib/modify';
+export { default as append } from './lib/append';
 export { default } from './domassist.default';

@@ -12,6 +12,7 @@ import './html.test';
 import './modify.test';
 import './show-hide.test';
 import './styles.test';
+import './append.test';
 
 const page = window.phantom.page;
 
