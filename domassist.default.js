@@ -21,6 +21,7 @@ import addAttrs from './lib/addAttrs';
 import html from './lib/html';
 import modify from './lib/modify';
 import append from './lib/append';
+import toArray from './lib/toArray';
 
 export default {
   addClass,
@@ -46,4 +47,5 @@ export default {
   html,
   modify,
   append,
+  toArray
 };
