@@ -262,7 +262,7 @@ domassist.modify('.my-div', {
 ```
 
 
-### on(selector, event, callback, capture)
+### on(selector, event, callback, [capture])
 
 Attach an event to an element based on a valid CSS selector or an Element.
 
@@ -287,7 +287,7 @@ domassist.on('a', 'click', (e) => {
 ```
 
 
-### off(selector, event)
+### off(selector, event, [capture])
 
 Remove an attached event.
 
@@ -296,6 +296,8 @@ Remove an attached event.
 `selector` - {string|Element|NodeList}
 
 `event` - {string} The name of the event to remove such as `click`, `mouseenter`, or `touchend`
+
+`[capture = false]` - {Boolean} Determines which phase to the attach the event to. Default is `false` when means the event is attached to the bubble phase. If `true` then it's attached to the capture phase.
 
 ### Example:
 

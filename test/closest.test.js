@@ -1,17 +1,15 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 
-function addNode(el, num) {
-  const node = document.createElement('div');
-  node.innerText = num;
-  node.classList.add(`level-${num}`);
-  const children = el.children;
-  if (children.length) {
-    const child = domassist.findOne(`.level-${num - 1}`);
-    child.appendChild(node);
-  } else {
-    el.appendChild(node);
-  }
+function addNodes() {
+  return `
+    <div class="level-1">1
+      <div class="level-2">2
+        <div class="level-3">3
+          <div class="level-4">4</div>
+        </div>
+      </div>
+    </div>`;
 }
 
 const teardown = (el) => {
@@ -23,9 +21,7 @@ const teardown = (el) => {
 test('closest - element', assert => {
   const el = domassist.findOne('#domassist');
   const levels = 4;
-  for (let i = 0; i < levels; i += 1) {
-    addNode(el, i + 1);
-  }
+  domassist.html(el, addNodes());
   const startEl = domassist.findOne(`.level-${levels}`);
   let count = levels - 1;
   while (count) {
@@ -39,9 +35,7 @@ test('closest - element', assert => {
 test('closest - selector', assert => {
   const el = domassist.findOne('#domassist');
   const levels = 4;
-  for (let i = 0; i < levels; i += 1) {
-    addNode(el, i + 1);
-  }
+  domassist.html(el, addNodes());
   let count = levels - 1;
   while (count) {
     assert.ok(domassist.closest(`.level-${levels}`, `.level-${count}`), `Should find element with class of level-${count}`);
