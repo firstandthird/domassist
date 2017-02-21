@@ -1,12 +1,11 @@
 {
   "name": "domassist",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Various dom helpers",
   "main": "dist/domassist.js",
   "module": "domassist.js",
   "scripts": {
-    "build": "scriptkit build",
-    "dev": "scriptkit dev",
+    "start": "scriptkit",
     "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec",
     "prepublish": "scriptkit"
   },
@@ -29,7 +28,7 @@
   "devDependencies": {
     "eslint-config-firstandthird": "^3.1.0",
     "eslint-plugin-import": "^2.1.0",
-    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.14",
     "scriptkit": "0.0.22",
     "static-server": "^2.0.3",
     "tap-spec": "^4.1.1",

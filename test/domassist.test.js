@@ -12,6 +12,8 @@ import './html.test';
 import './modify.test';
 import './closest.test';
 import './once.test';
+import './show-hide.test';
+import './styles.test';
 
 const page = window.phantom.page;
 
@@ -56,60 +58,6 @@ test('findOne', assert => {
   const elWithContext = domassist.findOne('span', '.para2');
   assert.equal(elWithContext.innerHTML, 'p2', 'Correct element with context found');
   teardown(el);
-  assert.end();
-});
-
-test('toArray - null', assert => {
-  const els = domassist.toArray();
-  assert.equal(Array.isArray(els), true, 'always returns an array');
-  assert.equal(els.length, 0, 'returns empty array if null');
-  assert.end();
-});
-
-test('toArray - single node', assert => {
-  const container = domassist.findOne('#domassist');
-
-  container.innerHTML = `
-    <div class="test"></div>
-  `;
-  const el = domassist.findOne('div', container);
-  const els = domassist.toArray(el);
-  assert.equal(Array.isArray(els), true, 'is array');
-  assert.equal(els.length, 1);
-  assert.equal(els[0], el);
-  assert.end();
-});
-
-test('toArray - nodelist', assert => {
-  const frag = document.createDocumentFragment();
-  const total = 5;
-  for (let i = 0; i < total; i += 1) {
-    const div = document.createElement('div');
-    domassist.addClass(div, 'div-array');
-    frag.appendChild(div);
-  }
-  const el = domassist.findOne('#domassist');
-  el.appendChild(frag);
-  const divs = domassist.find('.div-array');
-  const arr = domassist.toArray(divs);
-  assert.ok(Array.isArray(arr), 'Nodelist converted to an array');
-  while (el.firstChild) {
-    el.removeChild(el.firstChild);
-  }
-  assert.end();
-});
-
-test('show, hide', assert => {
-  const el = domassist.findOne('#domassist');
-  el.style.display = 'inline';
-
-  domassist.hide(el);
-  assert.equal(el.style.display, 'none', 'Element hidden');
-  domassist.show(el);
-  assert.equal(el.style.display, 'inline', 'Element shown');
-
-  // reset
-  el.style.display = 'block';
   assert.end();
 });
 
@@ -164,27 +112,4 @@ test('Events - hover', assert => {
 
   page.sendEvent('mousemove', pos.left + pos.width / 2, pos.top + pos.height / 2);
   page.sendEvent('mousemove', pos.left + pos.width + 100, pos.top + pos.height + 100);
-});
-
-test('styles', assert => {
-  const el = domassist.findOne('#domassist');
-
-  el.innerHTML = `
-    <p>p1</p>
-    <p>p2</p>
-  `;
-
-  // Test default find
-  const els = domassist.find('p');
-  domassist.styles(els, {
-    width: '100px',
-    height: '150px'
-  });
-
-  assert.equal(els[0].style.width, '100px', 'width on first el set correctly');
-  assert.equal(els[0].style.height, '150px', 'height on first el set correctly');
-  assert.equal(els[1].style.width, '100px', 'width on second el set correctly');
-  assert.equal(els[1].style.height, '150px', 'height on second el set correctly');
-
-  assert.end();
 });
