@@ -8,6 +8,7 @@ import './classes.test';
 import './attrs.test';
 import './on.test';
 import './off.test';
+import './fire.test';
 import './html.test';
 import './modify.test';
 import './show-hide.test';

@@ -6,7 +6,8 @@
   "module": "domassist.js",
   "scripts": {
     "start": "scriptkit",
-    "test": "cat test/domassist.test.dist.js | tape-run --browser phantomjs --render tap-spec",
+    "dev": "scriptkit dev",
+    "test": "cat test/domassist.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
     "prepublish": "scriptkit"
   },
   "repository": {
@@ -26,10 +27,10 @@
   },
   "homepage": "https://github.com/firstandthird/domassist#readme",
   "devDependencies": {
-    "eslint-config-firstandthird": "^3.1.0",
+    "eslint-config-firstandthird": "3.2.0",
     "eslint-plugin-import": "^2.1.0",
     "phantomjs-prebuilt": "^2.1.14",
-    "scriptkit": "0.0.22",
+    "scriptkit": "0.2.0",
     "static-server": "^2.0.3",
     "tap-spec": "^4.1.1",
     "tape-rollup": "4.6.4",
@@ -45,13 +46,15 @@
     }
   },
   "scriptkit": {
+    "files": {
+      "dist/domassist.js": "domassist.js",
+      "test/domassist.test.dist.js": "test/domassist.test.js"
+    },
     "scripts": {
-      "commonjs": {
-        "include": "node_modules/**"
-      },
-      "files": {
-        "dist/domassist.js": "domassist.js",
-        "test/domassist.test.dist.js": "test/domassist.test.js"
+      "babel": {
+        "exclude": [
+          "node_modules/tape-rollup/*"
+        ]
       }
     }
   }

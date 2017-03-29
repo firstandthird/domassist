@@ -2,6 +2,7 @@ import addClass from './lib/addClass';
 import delegate from './lib/delegate';
 import find from './lib/find';
 import findOne from './lib/findOne';
+import fire from './lib/fire';
 import hasClass from './lib/hasClass';
 import hide from './lib/hide';
 import hover from './lib/hover';
@@ -28,6 +29,7 @@ export default {
   delegate,
   find,
   findOne,
+  fire,
   hasClass,
   hide,
   hover,
