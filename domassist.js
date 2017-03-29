@@ -2,6 +2,7 @@ export { default as addClass } from './lib/addClass';
 export { default as delegate } from './lib/delegate';
 export { default as find } from './lib/find';
 export { default as findOne } from './lib/findOne';
+export { default as fire } from './lib/fire';
 export { default as hasClass } from './lib/hasClass';
 export { default as hide } from './lib/hide';
 export { default as hover } from './lib/hover';
