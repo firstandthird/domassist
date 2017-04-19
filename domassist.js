@@ -10,6 +10,7 @@ export { default as isWindow } from './lib/isWindow';
 export { default as off } from './lib/off';
 export { default as on } from './lib/on';
 export { default as once } from './lib/once';
+export { default as prefixedTransform } from './lib/prefixedTransform';
 export { default as removeClass } from './lib/removeClass';
 export { default as scrollableContainer } from './lib/scrollableContainer';
 export { default as show } from './lib/show';

@@ -10,6 +10,7 @@ import isWindow from './lib/isWindow';
 import off from './lib/off';
 import on from './lib/on';
 import once from './lib/once';
+import prefixedTransform from './lib/prefixedTransform';
 import removeClass from './lib/removeClass';
 import scrollableContainer from './lib/scrollableContainer';
 import show from './lib/show';
@@ -37,6 +38,7 @@ export default {
   off,
   on,
   once,
+  prefixedTransform,
   removeClass,
   scrollableContainer,
   show,
