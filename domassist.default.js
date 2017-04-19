@@ -21,6 +21,7 @@ import ready from './lib/ready';
 import styles from './lib/styles';
 import addAttrs from './lib/addAttrs';
 import html from './lib/html';
+import isTouch from './lib/isTouch';
 import modify from './lib/modify';
 import append from './lib/append';
 import toArray from './lib/toArray';
@@ -49,6 +50,7 @@ export default {
   styles,
   addAttrs,
   html,
+  isTouch,
   modify,
   append,
   toArray
