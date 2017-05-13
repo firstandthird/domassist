@@ -3,7 +3,7 @@ import test from 'tape-rollup';
 
 const page = window.phantom.page;
 
-test('Events - off single element', assert => {
+test('Events - off single element several events', assert => {
   const el = domassist.findOne('#domassist');
   assert.plan(1);
   el.innerHTML = `
@@ -19,6 +19,14 @@ test('Events - off single element', assert => {
     clicked = true;
   });
 
+  domassist.on(link, 'click', e => {
+    clicked = true;
+  });
+
+  domassist.on(link, 'click', e => {
+    clicked = true;
+  });
+
   domassist.off(link, 'click');
 
   page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
@@ -26,6 +34,28 @@ test('Events - off single element', assert => {
   setTimeout(() => {
     assert.ok(!clicked, 'Event not fired');
   }, 500);
+});
+
+test('Events - Several handlers, one unbound', assert => {
+  const el = domassist.findOne('#domassist');
+  assert.plan(1);
+  el.innerHTML = `
+    <a href="#">Click</a>
+  `;
+
+  const link = domassist.findOne('a', el);
+  const myRemovableHandler = () => {
+    assert.fail('This should never fire');
+  };
+
+  domassist.on(link, 'click', () => {
+    assert.pass('Should only fire this event');
+  });
+
+  domassist.on(link, 'click', myRemovableHandler);
+  domassist.off(link, 'click', myRemovableHandler);
+
+  link.click();
 });
 
 test('Events - off multiple elements', assert => {
