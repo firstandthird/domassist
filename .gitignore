@@ -3,3 +3,5 @@ npm-debug.log
 .idea
 test/domassist.test.dist.js
 dist
+*.map
+.DS_Store
