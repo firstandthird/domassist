@@ -3,6 +3,7 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
+import './event-namespacing.test';
 import './find.test';
 import './classes.test';
 import './attrs.test';
