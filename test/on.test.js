@@ -1,8 +1,6 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 
-const page = window.phantom.page;
-
 test('Events - on single element', assert => {
   const el = domassist.findOne('#domassist');
   assert.plan(1);
@@ -10,13 +8,12 @@ test('Events - on single element', assert => {
     <a href="#">Click</a>
   `;
   const link = domassist.findOne('a');
-  const pos = link.getBoundingClientRect();
 
   domassist.on(link, 'click', e => {
     assert.ok(e instanceof MouseEvent, 'Event fired');
   });
 
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
+  link.click();
 });
 
 test('Events - on multiple elements', assert => {
@@ -34,8 +31,7 @@ test('Events - on multiple elements', assert => {
     assert.equal(e.target.id, `link-${index}`, `Link with id of link-${index} fired`);
   });
   links.forEach((item) => {
-    const pos = item.getBoundingClientRect();
-    page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
+    item.click();
     index += 1;
   });
 });

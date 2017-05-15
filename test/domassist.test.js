@@ -3,6 +3,7 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
+import './event-namespacing.test';
 import './find.test';
 import './classes.test';
 import './attrs.test';
@@ -14,8 +15,7 @@ import './modify.test';
 import './show-hide.test';
 import './styles.test';
 import './append.test';
-
-const page = window.phantom.page;
+import TestUtils from './test-utils';
 
 test('ready', assert => {
   // if you add more assertions update this number
@@ -117,9 +117,7 @@ test('Events - delegate', assert => {
   `;
 
   const button = domassist.findOne('button', el);
-  const pos = button.getBoundingClientRect();
-
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
+  button.click();
 });
 
 test('Events - once', assert => {
@@ -130,7 +128,6 @@ test('Events - once', assert => {
   `;
 
   const link = domassist.findOne('a', el);
-  const pos = link.getBoundingClientRect();
 
   let clicks = 0;
 
@@ -138,9 +135,9 @@ test('Events - once', assert => {
     clicks++;
   });
 
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
+  link.click();
+  link.click();
+  link.click();
 
   setTimeout(() => {
     assert.equal(clicks, 1, 'Only fired once');
@@ -152,21 +149,21 @@ test('Events - hover', assert => {
   const el = domassist.findOne('#domassist');
 
   el.innerHTML = `
-    <div style="height: 100px; width: 100px;"></div>
+    <div></div>
   `;
 
   const box = domassist.findOne('div', el);
-  const pos = box.getBoundingClientRect();
 
   domassist.hover(box, e => {
-    assert.ok(e instanceof MouseEvent, 'Enter fired');
+    assert.pass('Enter fired');
     assert.equal(e.type, 'mouseenter', 'Correct event');
   }, e => {
-    assert.ok(e instanceof MouseEvent, 'Leave fired');
+    assert.pass('Leave fired');
     assert.equal(e.type, 'mouseleave', 'Correct event');
-    assert.end();
   });
 
-  page.sendEvent('mousemove', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('mousemove', pos.left + pos.width + 100, pos.top + pos.height + 100);
+  TestUtils.fireEvent(box, 'mouseenter');
+  TestUtils.fireEvent(box, 'mouseleave');
+
+  assert.end();
 });
