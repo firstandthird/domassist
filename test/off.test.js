@@ -1,36 +1,28 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
 
-const page = window.phantom.page;
-
-test('Events - off single element', assert => {
+test('Events - off single element single event', assert => {
   const el = domassist.findOne('#domassist');
-  assert.plan(1);
   el.innerHTML = `
     <a href="#">Click</a>
   `;
 
   const link = domassist.findOne('a', el);
-  const pos = link.getBoundingClientRect();
+  const handler = () => {
+    assert.fail('I should not fire');
+  };
 
-  let clicked = false;
+  domassist.on(link, 'click', handler);
+  domassist.off(link, 'click', handler);
 
-  domassist.on(link, 'click', e => {
-    clicked = true;
-  });
+  link.click();
 
-  domassist.off(link, 'click');
-
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-
-  setTimeout(() => {
-    assert.ok(!clicked, 'Event not fired');
-  }, 500);
+  assert.ok('No events fired');
+  assert.end();
 });
 
 test('Events - off multiple elements', assert => {
   const el = domassist.findOne('#domassist');
-  assert.plan(4);
   el.innerHTML = `
     <a data-id="link-1" href="#">Click</a>
     <a data-id="link-2" href="#">Click</a>
@@ -39,20 +31,65 @@ test('Events - off multiple elements', assert => {
   `;
 
   const links = domassist.find('a', el);
-  domassist.on(links, 'click', e => {
-    const id = parseInt(e.target.dataset.id.replace('link-', ''), 10);
-    const div = document.createElement('div');
-    div.id = `id-${id}`;
-    el.appendChild(div);
+  const handler = () => {
+    assert.fail('I should never fire');
+  };
+
+  domassist.on(links, 'click', handler);
+  domassist.off(links, 'click', handler);
+
+  links.forEach(item => {
+    item.click();
   });
-  // domassist.off(links, 'click');
-  links.forEach((item, index) => {
-    const pos = item.getBoundingClientRect();
-    const id = `id-${index + 1}`;
-    page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-    const div = domassist.findOne(`#${id}`);
-    setTimeout(() => {
-      assert.equal(div.id, id, `Element with ID link-${index + 1} has no click event`);
-    }, 500);
+
+  assert.ok('No events fired');
+  assert.end();
+});
+
+test('Events - off with id', assert => {
+  const el = domassist.findOne('#domassist');
+  el.innerHTML = `
+    <a href="#">Click</a>
+  `;
+
+  const link = domassist.findOne('a', el);
+  const handler = () => {
+    assert.fail('I should not fire');
+  };
+
+  const id = domassist.on(link, 'click', handler);
+  domassist.off(id);
+
+  link.click();
+
+  assert.ok('No events fired');
+  assert.end();
+});
+
+test('Events - off with array of ids', assert => {
+  const el = domassist.findOne('#domassist');
+  el.innerHTML = `
+    <a data-id="link-1" href="#">Click</a>
+    <a data-id="link-2" href="#">Click</a>
+    <a data-id="link-3" href="#">Click</a>
+    <a data-id="link-4" href="#">Click</a>
+  `;
+
+  const links = domassist.find('a', el);
+  const handler = () => {
+    assert.fail('I should never fire');
+  };
+
+  const ids = domassist.on(links, 'click', handler);
+
+  assert.ok(Array.isArray(ids), 'Ids should be an array');
+  assert.equal(ids.length, 4, 'Should have 4 ids');
+
+  domassist.off(ids);
+  links.forEach(item => {
+    item.click();
   });
+
+  assert.ok('No events fired');
+  assert.end();
 });

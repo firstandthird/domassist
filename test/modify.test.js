@@ -1,5 +1,6 @@
 import domassist from '../domassist';
 import test from 'tape-rollup';
+import TestUtils from './test-utils';
 
 const setup = (total) => {
   const frag = document.createDocumentFragment();
@@ -20,8 +21,6 @@ const teardown = (el) => {
     el.removeChild(el.firstChild);
   }
 };
-
-const page = window.phantom.page;
 
 test('modify - add class', assert => {
   const el = domassist.findOne('#domassist');
@@ -71,33 +70,31 @@ test('modify - html', assert => {
 });
 //
 test('modify - events', assert => {
-  // assert.plan(5);
   const el = domassist.findOne('#domassist');
   el.innerHTML = `
     <a style="display: block; height: 100px; width: 100px;" href="#">Click</a>
   `;
   const link = domassist.findOne('a');
-  const pos = link.getBoundingClientRect();
   domassist.modify(link, {
     events: {
       click: (e) => {
-        assert.ok(e instanceof MouseEvent, 'Click event fired');
+        assert.pass('Click fired');
       },
       mouseenter: (e) => {
-        assert.ok(e instanceof MouseEvent, 'Enter fired');
+        assert.pass('Enter fired');
         assert.equal(e.type, 'mouseenter', 'Correct event');
       },
       mouseleave: (e) => {
-        assert.ok(e instanceof MouseEvent, 'Leave fired');
+        assert.pass('Leave fired');
         assert.equal(e.type, 'mouseleave', 'Correct event');
-        assert.end();
       }
     }
   });
 
-  page.sendEvent('click', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('mousemove', pos.left + pos.width / 2, pos.top + pos.height / 2);
-  page.sendEvent('mousemove', pos.left + pos.width + 100, pos.top + pos.height + 100);
+  link.click();
+  TestUtils.fireEvent(link, 'mouseenter');
+  TestUtils.fireEvent(link, 'mouseleave');
+  assert.end();
 });
 test('modify - styles', assert => {
   const el = domassist.findOne('#domassist');
