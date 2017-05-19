@@ -29,6 +29,7 @@
   "devDependencies": {
     "eslint-config-firstandthird": "3.2.0",
     "eslint-plugin-import": "^2.1.0",
+    "map-polyfill": "0.0.1",
     "phantomjs-prebuilt": "^2.1.14",
     "scriptkit": "0.2.0",
     "static-server": "^2.0.3",
