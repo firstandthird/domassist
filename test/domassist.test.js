@@ -1,5 +1,6 @@
 /* eslint no-console: 0 */
 
+import '../node_modules/map-polyfill/dist/map.min';
 import domassist from '../domassist';
 import test from 'tape-rollup';
 import { teardown } from './setup';
