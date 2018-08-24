@@ -55,3 +55,37 @@ test('Custom Events - on multiple elements', assert => {
 
   domassist.fire(links, 'foo');
 });
+
+test('Custom Events - Bubbles by default', assert => {
+  const el = domassist.findOne('#domassist');
+  el.innerHTML = `
+    <a id="link-1" href="#">Click</a>
+    <a id="link-2" href="#">Click</a>
+    <a id="link-3" href="#">Click</a>
+    <a id="link-4" href="#">Click</a>
+  `;
+  domassist.on(el, 'foo', () => {
+    assert.pass('Event caught on parent');
+    assert.end();
+  });
+
+  domassist.fire('#link-1', 'foo');
+});
+
+test('Custom Events - Bubble can be overridden', assert => {
+  const el = domassist.findOne('#domassist');
+  el.innerHTML = `
+    <a id="link-1" href="#">Click</a>
+    <a id="link-2" href="#">Click</a>
+    <a id="link-3" href="#">Click</a>
+    <a id="link-4" href="#">Click</a>
+  `;
+  domassist.on(el, 'foo', () => {
+    assert.fail('Event caught on parent');
+    assert.end();
+  });
+
+  domassist.fire('#link-1', 'foo', { bubbles: false });
+  assert.pass('Event not caught on parent');
+  assert.end();
+});
