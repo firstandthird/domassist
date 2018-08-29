@@ -104,6 +104,18 @@ test('closest', assert => {
   assert.end();
 });
 
+test('closest of an SVG element', assert => {
+  const node = document.createElement('div');
+  node.className = 'svg-wrapper';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  node.appendChild(svg);
+
+  const closest = domassist.closest(svg, '.svg-wrapper');
+
+  assert.equal(closest, node, 'Found closest');
+  assert.end();
+});
+
 test('Events - delegate', assert => {
   const el = domassist.findOne('#domassist');
 
