@@ -3,5 +3,6 @@ npm-debug.log
 .idea
 test/domassist.test.dist.js
 dist
+packag-lock.json
 *map
 .DS_Store
