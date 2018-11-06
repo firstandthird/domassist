@@ -34,6 +34,16 @@ test('closest', assert => {
   assert.end();
 });
 
+test('closest of button element', assert => {
+  const el = document.createElement('div');
+
+  el.innerHTML = '<button><span>Test</span></button>';
+  const button = el.firstElementChild;
+  assert.equal(domassist.closest(button, 'button'), button, 'Closest matches given element too');
+
+  assert.end();
+});
+
 test('closest of an SVG element', assert => {
   const node = document.createElement('div');
   node.className = 'svg-wrapper';
