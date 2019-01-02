@@ -14,7 +14,7 @@ In your project import the library:
 
 `import domassist from 'domassist'`
 
-The first argument for each method you are interested is either a selector, DOM node, or a collection of 
+The first argument for each method you are interested is either a selector, DOM node, or a collection of
 DOM Nodes
 
 ```javascript
@@ -44,6 +44,7 @@ domassist.addClass(els, 'my-new-class');
 - [show](#showelement)
 - [styles](#styleselements-styles)
 - [addAttrs](#addattrsselector-attributes)
+- [remove](#removeselector-context)
 
 ### find(selector, [context])
 
@@ -385,7 +386,6 @@ domassist.styles('p', {
 });
 ```
 
-
 ### addAttrs(selector, attributes)
 
 Add attributes to elements. If an attribute that is passed is not a valid attribute for the element it will be added as a `data-*` attribute.
@@ -415,6 +415,23 @@ domassist.addAttrs('a', {
 // <a class="my-div" id="anchor-id" title="this is a title" href="http://www.google.com" data-test-attr="data attribute"></a>
 ```
 
+
+### remove(selector, [context])
+
+Remove element(s) from the page based on a valid CSS selector.
+
+#### Parameters:
+
+`selector` - {string|Element|NodeList} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+
+`[context]` - Where to start looking for the selector.
+
+#### Example:
+
+```javascript
+domassist.remove('p'); // remove all paragraph tags
+domassist.remove('[type="text"]', document.forms[0]); // remove all text fields in the first form
+```
 
 ## License
 
