@@ -25,6 +25,7 @@ import isTouch from './lib/isTouch';
 import modify from './lib/modify';
 import append from './lib/append';
 import toArray from './lib/toArray';
+import remove from './lib/remove';
 
 export default {
   addClass,
@@ -53,5 +54,6 @@ export default {
   isTouch,
   modify,
   append,
-  toArray
+  toArray,
+  remove
 };

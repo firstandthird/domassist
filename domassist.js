@@ -25,4 +25,5 @@ export { default as isTouch } from './lib/isTouch';
 export { default as modify } from './lib/modify';
 export { default as append } from './lib/append';
 export { default as toArray } from './lib/toArray';
+export { default as remove } from './lib/remove';
 export { default } from './domassist.default';
