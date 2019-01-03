@@ -15,6 +15,7 @@ import './show-hide.test';
 import './styles.test';
 import './append.test';
 import './closest.test';
+import './remove.test';
 
 const page = window.phantom.page;
 
