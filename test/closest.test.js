@@ -44,7 +44,7 @@ test('closest of button element', assert => {
   assert.end();
 });
 
-test('closest of an SVG element', assert => {
+test('closest of an element without parentElement', assert => {
   const node = document.createElement('div');
   node.className = 'svg-wrapper';
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
