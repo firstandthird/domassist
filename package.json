@@ -2,8 +2,8 @@
   "name": "domassist",
   "version": "1.13.1",
   "description": "Various dom helpers",
-  "main": "dist/domassist.js",
-  "module": "domassist.js",
+  "main": "domassist.js",
+  "module": "dist/domassist.js",
   "scripts": {
     "start": "scriptkit",
     "dev": "scriptkit dev",
