@@ -8,7 +8,7 @@
     "start": "scriptkit",
     "dev": "scriptkit dev",
     "test": "cat test/domassist.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
-    "prepublish": "scriptkit"
+    "prepublishOnly": "scriptkit"
   },
   "repository": {
     "type": "git",
