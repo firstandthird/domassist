@@ -28,21 +28,21 @@ domassist.addClass(els, 'my-new-class');
 - [findOne](#findoneselector-context)
 - [addClass](#addclassselector-classes)
 - [removeClass](#removeclassselector-classes)
-- [toggleClass](#toggleclassselector-classes)
+- [toggleClass](#toggleclassselector-class)
 - [hasClass](#hasclassselector-class)
 - [html](#htmlselector-value)
 - [closest](#closestelement-selector)
 - [delegate](#delegateelement-event-selector-callback-capture)
-- [hide](#hideelement)
+- [hide](#hideselector)
 - [hover](#hoverelement-enter-exit)
 - [matches](#matches)
 - [modify](#modifyselector-params)
 - [on](#onselector-event-callback-capture)
 - [off](#offselector-event)
-- [once](#onceselector-event-callback-capture)
+- [once](#onceelement-event-callback-capture)
 - [ready](#readycallback)
-- [show](#showelement)
-- [styles](#styleselements-styles)
+- [show](#showselector)
+- [styles](#stylesselector-styles)
 - [addAttrs](#addattrsselector-attributes)
 - [remove](#removeselector-context)
 
@@ -437,7 +437,7 @@ domassist.remove('[type="text"]', document.forms[0]); // remove all text fields 
 
 ### MIT License
 
-Copyright (c) 2016 First+Third
+Copyright (c) 2019 First+Third
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
