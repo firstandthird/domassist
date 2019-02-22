@@ -1,6 +1,6 @@
 {
   "name": "domassist",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Various dom helpers",
   "main": "domassist.js",
   "module": "dist/domassist.esm.js",
