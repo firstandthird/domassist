@@ -1,9 +1,8 @@
 node_modules
 npm-debug.log
 .idea
-test/domassist.test.dist.js
-test/domassist.test.dist.esm.js
-*map
+test/*
+*.map
 .DS_Store
 .git
 .editorconfig
