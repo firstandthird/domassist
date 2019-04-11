@@ -1,6 +1,7 @@
 # domassist
 
 [![Build Status](https://travis-ci.org/firstandthird/domassist.svg?branch=master)](https://travis-ci.org/firstandthird/domassist)
+![npm](https://img.shields.io/npm/v/domassist.svg)
 
 This is a collection of functions designed to make working the DOM easier.
 
