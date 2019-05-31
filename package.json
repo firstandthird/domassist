@@ -6,9 +6,11 @@
   "module": "dist/domassist.esm.js",
   "scripts": {
     "start": "scriptkit",
+    "build": "scriptkit build",
     "dev": "scriptkit dev",
-    "test": "cat test/domassist.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
-    "prepublishOnly": "scriptkit"
+    "pretest": "scriptkit build",
+    "prepublishOnly": "scriptkit",
+    "test": "cat test/domassist.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec"
   },
   "repository": {
     "type": "git",
