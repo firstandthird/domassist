@@ -92,3 +92,22 @@ test('hasClass - selector', assert => {
   teardown(el);
   assert.end();
 });
+
+test('toggleClass - multiple elements', assert => {
+  const el = domassist.findOne('#domassist');
+  const total = 5;
+  const cls = 'toggle';
+
+  setup(el);
+  domassist.toggleClass('.test-divs', cls);
+  const divs = domassist.find('.test-divs');
+  let count = divs.filter(div => div.classList.contains(cls));
+  assert.equal(count.length, total, 'All elements got classes added');
+
+  domassist.toggleClass(domassist.find('.test-divs'), cls);
+  count = divs.some(div => div.classList.contains(cls));
+  assert.notOk(count, 'All elements got classes removed');
+
+  teardown(el);
+  assert.end();
+});
