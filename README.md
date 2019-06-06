@@ -7,13 +7,15 @@ This is a collection of functions designed to make working the DOM easier.
 
 ## Installation
 
-`npm install --save domassist`
+`npm install domassist`
 
 ## Usage
 
 In your project import the library:
 
-`import domassist from 'domassist'`
+```js
+import domassist from 'domassist'
+```
 
 The first argument for each method you are interested is either a selector, DOM node, or a collection of
 DOM Nodes
