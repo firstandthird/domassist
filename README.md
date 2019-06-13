@@ -135,7 +135,7 @@ Add a class if it doesn't exist and vice versa if it does.
 
 #### Parameters:
 
-`selector` - {string|Element} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
+`selector` - {string|Element|NodeList} - A valid CSS selector. If a NodeList is passed it will be converted to an Array.
 
 `class` - {string} The class to toggle.
 
@@ -190,11 +190,7 @@ Find the closest parent element that matches the given selector
 
 `selector` - {string} A valid CSS of the element to be found.
 
-
 ### delegate(element, event, selector, callback, capture)
-
-
-
 
 ### hide(selector)
 
@@ -203,7 +199,6 @@ Hide an element by setting it's css `display` to `none`.
 Parameters:
 
 `selector` - {string|Element|NodeList}
-
 
 ### hover(element, enter, exit)
 
@@ -265,11 +260,9 @@ domassist.modify('.my-div', {
 });
 ```
 
-
 ### on(selector, event, callback, capture)
 
 Attach an event to an element based on a valid CSS selector or an Element.
-
 
 #### Parameters:
 
@@ -307,7 +300,6 @@ Remove an attached event.
 domassist.off('a', 'click');
 ```
 
-
 ### once(element, event, callback, capture)
 
 Attach an event to an element to be fired once.
@@ -330,7 +322,6 @@ domassist.once('a', 'click', (e) => {
   console.log('clicked!');
 });
 ```
-
 
 ### ready(callback)
 
@@ -359,7 +350,6 @@ domassist.ready(() => {
 // x is 2
 // x is 3
 ```
-
 
 ### show(selector)
 
@@ -417,7 +407,6 @@ domassist.addAttrs('a', {
 // <div class="my-div" id="anchor-id" title="this is a title" data-href="http://www.google.com" data-test-attr="data attribute"></div>
 // <a class="my-div" id="anchor-id" title="this is a title" href="http://www.google.com" data-test-attr="data attribute"></a>
 ```
-
 
 ### remove(selector, [context])
 
