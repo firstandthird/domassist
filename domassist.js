@@ -1,29 +1,59 @@
-export { default as addClass } from './lib/addClass';
-export { default as delegate } from './lib/delegate';
-export { default as find } from './lib/find';
-export { default as findOne } from './lib/findOne';
-export { default as fire } from './lib/fire';
-export { default as hasClass } from './lib/hasClass';
-export { default as hide } from './lib/hide';
-export { default as hover } from './lib/hover';
-export { default as isWindow } from './lib/isWindow';
-export { default as off } from './lib/off';
-export { default as on } from './lib/on';
-export { default as once } from './lib/once';
-export { default as prefixedTransform } from './lib/prefixedTransform';
-export { default as removeClass } from './lib/removeClass';
-export { default as scrollableContainer } from './lib/scrollableContainer';
-export { default as show } from './lib/show';
-export { default as matches } from './lib/matches';
-export { default as toggleClass } from './lib/toggleClass';
-export { default as closest } from './lib/closest';
-export { default as ready } from './lib/ready';
-export { default as styles } from './lib/styles';
-export { default as addAttrs } from './lib/addAttrs';
-export { default as html } from './lib/html';
-export { default as isTouch } from './lib/isTouch';
-export { default as modify } from './lib/modify';
-export { default as append } from './lib/append';
-export { default as toArray } from './lib/toArray';
-export { default as remove } from './lib/remove';
-export { default } from './domassist.default';
+import addClass from './lib/addClass';
+import delegate from './lib/delegate';
+import find from './lib/find';
+import findOne from './lib/findOne';
+import fire from './lib/fire';
+import hasClass from './lib/hasClass';
+import hide from './lib/hide';
+import hover from './lib/hover';
+import isWindow from './lib/isWindow';
+import off from './lib/off';
+import on from './lib/on';
+import once from './lib/once';
+import prefixedTransform from './lib/prefixedTransform';
+import removeClass from './lib/removeClass';
+import scrollableContainer from './lib/scrollableContainer';
+import show from './lib/show';
+import matches from './lib/matches';
+import toggleClass from './lib/toggleClass';
+import closest from './lib/closest';
+import ready from './lib/ready';
+import styles from './lib/styles';
+import addAttrs from './lib/addAttrs';
+import html from './lib/html';
+import isTouch from './lib/isTouch';
+import modify from './lib/modify';
+import append from './lib/append';
+import toArray from './lib/toArray';
+import remove from './lib/remove';
+
+export default {
+  addClass,
+  delegate,
+  find,
+  findOne,
+  fire,
+  hasClass,
+  hide,
+  hover,
+  isWindow,
+  off,
+  on,
+  once,
+  prefixedTransform,
+  removeClass,
+  scrollableContainer,
+  show,
+  matches,
+  toggleClass,
+  closest,
+  ready,
+  styles,
+  addAttrs,
+  html,
+  isTouch,
+  modify,
+  append,
+  toArray,
+  remove
+};

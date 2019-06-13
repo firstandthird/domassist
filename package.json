@@ -30,14 +30,14 @@
   "homepage": "https://github.com/firstandthird/domassist#readme",
   "devDependencies": {
     "eslint-config-firstandthird": "^4.3.0",
-    "eslint-plugin-compat": "^2.7.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-compat": "^3.1.1",
+    "eslint-plugin-import": "^2.17.3",
     "phantomjs-prebuilt": "^2.1.16",
-    "scriptkit": "^2.0.1",
+    "scriptkit": "^2.0.3",
     "static-server": "^2.2.1",
     "tap-spec": "^5.0.0",
     "tape-rollup": "^4.6.4",
-    "tape-run": "^2.1.5"
+    "tape-run": "^6.0.0"
   },
   "eslintConfig": {
     "env": {
