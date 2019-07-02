@@ -7,7 +7,9 @@ This is a collection of functions designed to make working the DOM easier.
 
 ## Installation
 
-`npm install domassist`
+```sh
+npm install domassist
+```
 
 ## Usage
 
