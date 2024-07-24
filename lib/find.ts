@@ -1,12 +1,10 @@
-import isWindow from './isWindow';
-
-function find(selector, context = null) {
-  if (selector instanceof HTMLElement || selector instanceof Node || isWindow(selector)) {
+function find(selector: HTMLElement | NodeList | string, context?: HTMLElement | NodeList): Array<HTMLElement> {
+  if (selector instanceof HTMLElement) {
     return [selector];
   } else if (selector instanceof NodeList) {
     return [].slice.call(selector);
   } else if (typeof selector === 'string') {
-    const startElement = (context) ? find(context)[0] : document;
+    const startElement: HTMLElement | Document = (context) ? find(context)[0] : document;
     return [].slice.call(startElement.querySelectorAll(selector));
   }
   return [];

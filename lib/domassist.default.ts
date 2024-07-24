@@ -6,7 +6,6 @@ import fire from './fire';
 import hasClass from './hasClass';
 import hide from './hide';
 import hover from './hover';
-import isWindow from './isWindow';
 import off from './off';
 import on from './on';
 import once from './once';
@@ -36,7 +35,6 @@ export default {
   hasClass,
   hide,
   hover,
-  isWindow,
   off,
   on,
   once,

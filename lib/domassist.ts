@@ -6,7 +6,6 @@ export { default as fire } from './fire';
 export { default as hasClass } from './hasClass';
 export { default as hide } from './hide';
 export { default as hover } from './hover';
-export { default as isWindow } from './isWindow';
 export { default as off } from './off';
 export { default as on } from './on';
 export { default as once } from './once';
