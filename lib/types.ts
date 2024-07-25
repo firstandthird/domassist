@@ -1,0 +1,1 @@
+export type DomSelector = HTMLElement | NodeList | string;

@@ -1,8 +1,7 @@
+import type { DomSelector } from './types';
 import find from './find';
 
-type AttrSelector = HTMLElement | NodeList | string | Array<HTMLElement | NodeList | string>;
-
-function addAttrs(selector: AttrSelector, attrs: { [key: string]: string }): Array<HTMLElement> {
+function addAttrs(selector: DomSelector | DomSelector[], attrs: { [key: string]: string }): HTMLElement[] {
   if (Array.isArray(selector)) {
     if (selector.length) {
       selector.forEach((item) => addAttrs(item, attrs));
