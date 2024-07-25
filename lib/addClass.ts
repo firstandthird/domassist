@@ -3,8 +3,11 @@ import find from './find';
 
 function addClass(selector: DomSelector | DomSelector[], cls: string | string[]): HTMLElement[] {
   if (Array.isArray(selector)) {
-    selector.forEach((item) => addClass(item, cls));
-    return [];
+    const x = [] as HTMLElement[];
+    selector.forEach((item) => {
+      x.concat(addClass(item, cls));
+    });
+    return x;
   }
   const els = find(selector);
   if (els.length) {

@@ -3,11 +3,12 @@ import find from './find';
 
 function addAttrs(selector: DomSelector | DomSelector[], attrs: { [key: string]: string }): HTMLElement[] {
   if (Array.isArray(selector)) {
-    if (selector.length) {
-      selector.forEach((item) => addAttrs(item, attrs));
-    }
-    return [];
-  } 
+    const x = [] as HTMLElement[];
+    selector.forEach((item) => {
+      x.concat(addAttrs(item, attrs));
+    });
+    return x;
+  }
   const els = find(selector);
   if (els.length) {
     els.forEach((item) => {

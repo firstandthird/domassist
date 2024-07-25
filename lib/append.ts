@@ -1,8 +1,10 @@
+import type { DomSelector } from './types';
 import find from './find';
 
-function append(selector, value) {
+function append(selector: DomSelector | DomSelector[], value: string | HTMLElement | Node): void {
   if (Array.isArray(selector)) {
-    return selector.forEach((item) => append(item, value));
+    selector.forEach((item) => append(item, value));
+    return;
   }
   const els = find(selector);
   if (els.length) {
