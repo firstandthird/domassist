@@ -1,7 +1,7 @@
 import type { DomSelector } from './types';
 import find from './find';
 
-function append(selector: DomSelector | DomSelector[], value: string | HTMLElement | Node): void {
+function append(selector: DomSelector | DomSelector[], value: string | HTMLElement | Node) {
   if (Array.isArray(selector)) {
     selector.forEach((item) => append(item, value));
     return;

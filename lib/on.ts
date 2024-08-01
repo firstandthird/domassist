@@ -1,6 +1,7 @@
 import find from './find';
+import { DomSelector } from './types';
 
-function on(selector, event, cb, options) {
+function on(selector: DomSelector | DomSelector[], event, cb, options) {
   if (Array.isArray(selector)) {
     selector.forEach((item) => on(item, event, cb, options));
     return;

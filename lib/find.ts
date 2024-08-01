@@ -1,4 +1,4 @@
-function find(selector: HTMLElement | NodeList | string, context?: HTMLElement | NodeList): Array<HTMLElement> {
+function find(selector: HTMLElement | NodeList | string, context?: HTMLElement | NodeList): HTMLElement[] {
   if (selector instanceof HTMLElement) {
     return [selector];
   } else if (selector instanceof NodeList) {

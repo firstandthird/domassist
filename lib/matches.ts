@@ -1,25 +1,12 @@
-function matches(el, selector) {
-  const proto = Element.prototype;
-  let match = false;
-
-  const prefixes = [
-    'matches',
-    'matchesSelector',
-    'webkitMatchesSelector',
-    'mozMatchesSelector',
-    'msMatchesSelector',
-    'oMatchesSelector'
-  ];
-
-  prefixes.forEach(prefix => {
-    if (proto.hasOwnProperty(prefix)) {
-      match = proto[prefix];
+function matches(el: HTMLElement | null, selector: HTMLElement | string): boolean | null {
+  if (el) {
+    if (selector instanceof HTMLElement) {
+      return el === selector;
+    } else if (typeof selector === 'string') {
+      return el.matches(selector);
     }
-  });
-
-  if (match) {
-    return (el) ? match.call(el, selector) : null;
   }
+  return null;
 }
 
 export default matches;
