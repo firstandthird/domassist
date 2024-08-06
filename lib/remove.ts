@@ -1,19 +1,17 @@
 import find from './find';
+import { DomSelector } from './types';
 
-function remove(selector, context) {
+function remove(selector: DomSelector | DomSelector[], context?: HTMLElement | NodeList) {
   if (Array.isArray(selector)) {
-    return selector.forEach(item => remove(item, context));
+    selector.forEach(item => remove(item, context));
+    return;
   }
 
   const els = find(selector, context);
 
   if (els.length) {
     els.forEach(el => {
-      if (el.prototype && el.prototype.remove) {
-        el.remove();
-      } else if (el.parentNode) {
-        el.parentNode.removeChild(el);
-      }
+      el.remove();
     });
   }
 }

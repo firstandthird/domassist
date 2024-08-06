@@ -9,6 +9,7 @@ function addClass(selector: DomSelector | DomSelector[], cls: string | string[])
     });
     return x;
   }
+  
   const els = find(selector);
   if (els.length) {
     const clsArray = ([] as string[]).concat(cls);

@@ -1,8 +1,10 @@
 import find from './find';
+import { DomSelector } from './types';
 
-function off(selector, event) {
+function off(selector: DomSelector | DomSelector[], event: string) {
   if (Array.isArray(selector)) {
     selector.forEach((item) => off(item, event));
+    return;
   }
   if (!window._domassistevents) {
     window._domassistevents = {};

@@ -1,23 +1,25 @@
 import find from './find';
+import type { DomSelector } from './types';
 
-function toggleClass(selector, cls) {
+function toggleClass(selector: DomSelector | DomSelector[], cls: string | string[]): HTMLElement[] {
   if (Array.isArray(selector)) {
-    return selector.forEach(item => toggleClass(item, cls));
+    const x = [] as HTMLElement[];
+    selector.forEach((item) => {
+      x.concat(toggleClass(item, cls));
+    });
+    return x;
   }
 
   const els = find(selector);
-
   if (els.length) {
-    const clsArray = [].concat(cls);
-
+    const clsArray = ([] as string[]).concat(cls);
     els.forEach(el => {
       clsArray.forEach(item => {
         el.classList.toggle(item);
       });
     });
-
-    return els;
   }
+  return els;
 }
 
 export default toggleClass;

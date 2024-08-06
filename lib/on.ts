@@ -1,13 +1,13 @@
 import find from './find';
-import { DomSelector } from './types';
+import { DomSelector, EventOptions } from './types';
 
-function on(selector: DomSelector | DomSelector[], event, cb, options) {
+function on(selector: DomSelector | DomSelector[], event: string, cb: (e: Event) => void, options?: boolean | AddEventListenerOptions) {
   if (Array.isArray(selector)) {
     selector.forEach((item) => on(item, event, cb, options));
     return;
   }
 
-  let eventOptions = {};
+  let eventOptions: EventOptions = {};
 
   if (typeof options === 'boolean') {
     eventOptions.capture = options;
