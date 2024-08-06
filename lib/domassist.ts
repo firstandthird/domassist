@@ -17,4 +17,3 @@ export { default as html } from './html';
 export { default as isTouch } from './isTouch';
 export { default as append } from './append';
 export { default as remove } from './remove';
-export { default } from './domassist.default';

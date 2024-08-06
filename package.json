@@ -24,6 +24,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && microbundle && npm run docgen:local",
+    "build:nodocs": "rm -rf dist && microbundle",
     "dev": "microbundle watch",
     "docgen": "api-extractor run && api-documenter markdown --input-folder ./temp --output-folder ./docs",
     "docgen:local": "api-extractor run --local --verbose",
