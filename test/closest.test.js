@@ -1,15 +1,15 @@
-import domassist from '../domassist';
-import test from 'tape-rollup';
+import domassist from "..";
+import test from "tape-rollup";
 
-test('closest', assert => {
-  const el = domassist.findOne('#domassist');
+test("closest", (assert) => {
+  const el = domassist.findOne("#domassist");
   const levels = 4;
-    // clean up test dom
+  // clean up test dom
   while (el.firstChild) {
     el.removeChild(el.firstChild);
   }
   function addNode(num) {
-    const node = document.createElement('div');
+    const node = document.createElement("div");
     node.innerText = num;
     node.classList.add(`level-${num}`);
     const children = el.children;
@@ -26,33 +26,43 @@ test('closest', assert => {
   const startEl = domassist.findOne(`.level-${levels}`);
   let count = levels - 1;
   while (count) {
-    assert.ok(domassist.closest(startEl, `.level-${count}`), `Should find element with class of level-${count}`);
+    assert.ok(
+      domassist.closest(startEl, `.level-${count}`),
+      `Should find element with class of level-${count}`
+    );
     --count;
   }
-  assert.notOk(domassist.closest(startEl, '.level-a'), "Shouldnt't find element with class of level-a");
+  assert.notOk(
+    domassist.closest(startEl, ".level-a"),
+    "Shouldnt't find element with class of level-a"
+  );
 
   assert.end();
 });
 
-test('closest of button element', assert => {
-  const el = document.createElement('div');
+test("closest of button element", (assert) => {
+  const el = document.createElement("div");
 
-  el.innerHTML = '<button><span>Test</span></button>';
+  el.innerHTML = "<button><span>Test</span></button>";
   const button = el.firstElementChild;
-  assert.equal(domassist.closest(button, 'button'), button, 'Closest matches given element too');
+  assert.equal(
+    domassist.closest(button, "button"),
+    button,
+    "Closest matches given element too"
+  );
 
   assert.end();
 });
 
-test('closest of an element without parentElement', assert => {
-  const node = document.createElement('div');
-  node.className = 'svg-wrapper';
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+test("closest of an element without parentElement", (assert) => {
+  const node = document.createElement("div");
+  node.className = "svg-wrapper";
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   node.appendChild(svg);
 
-  const closest = domassist.closest(svg, '.svg-wrapper');
+  const closest = domassist.closest(svg, ".svg-wrapper");
 
-  assert.equal(closest, node, 'Found closest');
+  assert.equal(closest, node, "Found closest");
 
   assert.end();
 });
